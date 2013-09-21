@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<style type="text/css">
+.modal-reg-bg{
+	position: fixed;
+	left: 0;
+	top: 0;
+	z-index: 95;
+	min-height: 100%!important;
+	width: 100%!important;
+	height: 100%!important;
+	overflow: visible;
+	background: #666;
+
+	-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=50)"; /* ie8  */
+    filter:alpha(opacity=50);    /* ie5-7  */
+    -moz-opacity:0.5;    /* old mozilla browser like netscape  */
+    -khtml-opacity: 0.5;    /* for really really old safari */ 
+    opacity: 0.5; 
+	width: 1349px;
+	height: 7595px;
+	display:none;
+}
+.modal-reg-main-bg{
+	width:400px;
+	height:280px;
+	background-color: #FFFFFF;
+	z-index: 99;
+	position: fixed;
+
+	-moz-box-shadow: 4px 4px 4px #7a8eb9;
+    -webkit-box-shadow: 4px 4px 4px #7a8eb9;
+    box-shadow: 4px 4px 4px #7a8eb9;
+
+    -webkit-border-radius:3px 3px 3px 3px ;
+	-moz-border-radius:3px 3px 3px 3px ;
+	-o-border-radius:3px 3px 3px 3px ;
+	border-radius:3px 3px 3px 3px ;
+	display:none;
+}
+.modal-reg-title{
+	width:100%;
+	height:30px;
+	font-size: 14px;
+	font-weight: bold;
+	color:#FFFFFF;
+	line-height: 30px;
+	background-color: #5CACEE;
+	vertical-align: middle;
+}
+.modal-reg-title-text{
+	margin-left: 20px;
+	float:left;
+}
+.modal-reg-title-close{
+	margin-right: 10px;
+	float:right;
+	cursor: pointer;
+}
+.modal-reg-title-close:hover{
+	text-decoration: underline;
+}
+.modal-reg-form-div{
+	height:200px;
+	width:100%;
+	text-align: center;
+	vertical-align: top;
+}
+.modal-reg-form{
+	margin-top: 20px;
+}
+.modal-reg-label{
+	float: left;
+	width:100px;
+	text-align: right;
+	vertical-align: middle;
+	margin-right: 0px;
+	height:28px;
+	line-height: 28px;
+}
+.modal-reg-input{
+	margin-left: 0px;
+}
+.modal-reg-btns{
+	width:100%;
+	text-align: center;
+}
+.modal-reg-helps{
+	width: 100%;
+	text-align: right;
+}
+.modal-reg-a-m{
+	margin-right: 10px;
+	text-decoration: underline;
+}
+.modal-reg-a-m:last-child{
+	margin-right: 40px;
+}
+</style>
+<div class='modal-reg-bg'>
+</div>
+<div class='modal-reg-main-bg'>
+	<div class='modal-reg-title'>
+		<span class='modal-reg-title-text'>
+			用户注册
+		</span>
+		<span class='modal-reg-title-close'>
+			[close]
+		</span>
+	</div>
+	<div class='modal-reg-form-div'>
+		<form method = "post" action="/reg" class='modal-reg-form'>
+			<label for='username' class='modal-reg-label'>用户名:</label>
+			<input type='text' name='username' placeholder='请输入用户名' class='modal-reg-input'>
+			<label for='password' class='modal-reg-label'>密码:</label>
+			<input type='password' name='password' placeholder='请输入密码' class='modal-reg-input'>
+			<label for='password-repeat' class='modal-reg-label'>重复密码:</label>
+			<input type='password' name='password-repeat' placeholder='请再次输入密码' class='modal-reg-input'>
+			<label for='email' class='modal-reg-label'>电子邮件:</label>
+			<input type='email' name='email' placeholder='请输入电子邮件地址' class='modal-reg-input'>
+			<div class='modal-reg-helps'>
+				<a href='/reg' class='modal-reg-a-m'>登录</a>
+			</div>
+			<div class='modal-reg-btns'>
+				<button type='button' class='btn btn-primray'>提交</button>
+				<button type='button' class='btn' id='modal-reg-cancel'>取消</button>
+			</div>
+		</form>
+	</div>
+</div>
+<script type="text/javascript" src='/javascripts/modalDialogReg.js'></script>
+<script type="text/javascript">
+	var $maskFuncReg ;
+	$(document).ready(function(){
+		$maskFuncReg = $(document).modalDialogReg();
+	}) ; 	
+</script>

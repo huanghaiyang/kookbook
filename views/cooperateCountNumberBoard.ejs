@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<%-include header%>
+<%-include indexSearch%>
+<%-include userReadStatus%>
+<style type="text/css">
+	.count-c{
+		width:100%;
+		margin-bottom: 10px;
+		margin-top: 20px;
+		text-align: center;
+		padding-top:20px;
+	}
+	.board-one{
+		height:40px;
+		line-height: 40px;
+		vertical-align: middle;
+		display: inline-block;
+	}
+	.board-text{
+		height:100%;
+		line-height: 40px;
+		vertical-align: middle;
+		font-family: '幼圆',
+		text-shadow:0 -1px 0 rgba(0,0,0,0.4);
+		font-size: 14px;
+		display: inline-block;
+	}
+	.board-row{
+		height:40px;
+		margin-bottom: 20px;
+		width:600px;
+		text-align: center;
+		display: inline-block;
+	}
+	.count-title{
+		margin-top: 25px;
+		color: #454545;
+		text-shadow: 0px 1px 2px #ffffff;
+		font-size: 25pt;
+		text-align: center;
+		font-weight: 400;
+		letter-spacing: -2px;
+		line-height: 75px;
+		margin-bottom: 10px;
+		font-family: "museo-slab";
+		font-weight: 400;
+		letter-spacing: -4px;
+	}
+	.count-sec-title{
+		font-size: 12pt;
+		font-weight: 300;
+		text-shadow: 0px 1px 1px white;
+		text-align: center;
+		line-height: 28px;
+		margin-top: 40px;
+	}
+	.count-url{
+		color: #005791;
+		font-size: 12pt;
+		font-weight: 300;
+		text-shadow: 0px 1px 1px white;
+		text-align: center;
+		line-height: 28px;
+		margin-top: 40px;
+	}
+	.go-url{
+		height:16px;
+		vertical-align:text-top;
+		margin-top:2px;
+	}
+	.go-url:hover{
+		-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=80)"; /* ie8  */
+	    filter:alpha(opacity=80);    /* ie5-7  */
+	    -moz-opacity:0.8;    /* old mozilla browser like netscape  */
+	    -khtml-opacity: 0.8;    /* for really really old safari */ 
+	    opacity: 0.8; 
+	}
+</style>
+<link rel="stylesheet" type="text/css" href="/stylesheets/countNumberBoard.css">
+<script type="text/javascript" src='/javascripts/countNumberBoard.js'></script>
+<div class='container'>
+	<div class='row'>
+		<div class='span12'>
+			<div class='count-title'>
+				打造智慧型的读书社区
+			</div>
+			<div class='count-sec-title'>
+				贡献你的知识
+				&分享我们的快乐&
+				<a href='/cooperation/cooperateIndex'>
+					点击此处去编辑
+					<img src="/images/arrow_right.png" class='go-url'>
+				</a>
+			</div>
+			<div class='count-c'>
+				<div class='board-row'>
+					<div class='board-text'>
+						收录
+					</div>
+					<div class='board-one' data-board-number='39870'>
+					</div>
+					<div class='board-text'>
+						位作者
+					</div>
+				</div>
+				<div class='board-row'>
+					<div class='board-text'>
+						收录
+					</div>
+					<div class='board-one' data-board-number='39870'>
+					</div>
+					<div class='board-text'>
+						本书籍
+					</div>
+				</div>
+				<div class='board-row'>
+					<div class='board-text'>
+						收录
+					</div>
+					<div class='board-one' data-board-number='39870'>
+					</div>
+					<div class='board-text'>
+						个条目
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<%include cooperateIndexLoadSomes%>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('.board-one').countNumberBoard();
+	}) ; 
+</script>

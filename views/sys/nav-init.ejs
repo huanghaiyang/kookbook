@@ -1,0 +1,55 @@
+<!doctype html>
+<script type="text/javascript">
+	var newTab = function(id , action , text){
+		TabFactory.newTab(id , text);
+		var tab = TabPanelFactory.newTabPanel(id);
+		tab.attr('src' , action);
+	};
+	var li1Template = '<li class="collapsable"><div class="hitarea collapsable-hitarea"></div><a class="">${text}</a></li>';
+	var li2Template = '<li><a class="" href="javascript:newTab(\'${id}\',\'${action}\',\'${text}\')">${text}</a></li>';
+	var supperLevelUl = $('#navigation');
+	var createTreeNode = function(parent , result){
+		for(var i = 0 ; i < result.length ; i ++)
+		{
+			var r = result[i];
+			var template = '';
+			if(r.children && r.children.length >0)
+				template = li1Template;
+			else
+				template = li2Template;
+			var t = $(template.replace(/\$\{[\w]+\}/ig , function(v){
+				if(v === '${id}' && r.id)
+					return r.id;
+				else if(v === '${action}' && r.action)
+					return r.action;
+				else if(v === '${text}' && r.text)
+					return r.text;
+				else 
+					return null;
+			}));
+			parent.append(t);
+			if(r.children && r.children.length > 0)
+			{
+				var ul = $('<ul style="display: block;"></ul>');
+				t.append(ul);
+				createTreeNode(ul , r.children);
+			}
+		}
+	};
+	$.ajax({
+		type:"get",
+		url:'/javascripts/sys/nav.json',
+		data:{
+		},
+		datatype:'json',
+		success:function(result , state , req){
+			createTreeNode(supperLevelUl , result);
+			$("#navigation").treeview({
+				persist: "location",
+				collapsed: true
+			});
+		},
+		falture:function(result , state , req){
+		}
+	});
+</script>

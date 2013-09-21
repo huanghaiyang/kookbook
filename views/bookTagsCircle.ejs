@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<style type='text/css'>
+	.tag-circle-node{
+		display: block;
+		opacity: 0.9;
+		position: absolute;
+	}
+	.tag-circle-node:hover{
+		opacity: 0.8;
+	}
+	.view-tags-container{
+		position: relative;
+		height:100%;
+	}
+</style>
+<script type="text/javascript" src='/javascripts/bookTagsCircle.js'></script>
+<div class='view-tags-container common-view' id='viewTags'>
+</div>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('#viewTags').bookTagsCircle({
+			num : 200,
+			size:[10,30]
+		}) ;
+	}) ;
+</script>

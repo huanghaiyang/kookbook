@@ -1,0 +1,233 @@
+<!DOCTYPE HTML>
+	<style type="text/css">
+		.control-flex{
+			display: inline-block;
+		}
+	    .control-flex-button {
+	        
+	        -moz-box-shadow:inset 0px 1px 0px 0px #7a8eb9;
+	        -webkit-box-shadow:inset 0px 1px 0px 0px #7a8eb9;
+	        box-shadow:inset 0px 1px 0px 0px #7a8eb9;
+	        
+	        background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #637aad), color-stop(1, #5972a7));
+	        background:-moz-linear-gradient(top, #637aad 5%, #5972a7 100%);
+	        background:-webkit-linear-gradient(top, #637aad 5%, #5972a7 100%);
+	        background:-o-linear-gradient(top, #637aad 5%, #5972a7 100%);
+	        background:-ms-linear-gradient(top, #637aad 5%, #5972a7 100%);
+	        background:linear-gradient(to bottom, #637aad 5%, #5972a7 100%);
+	        filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#637aad', endColorstr='#5972a7',GradientType=0);
+	        
+	        background-color:#637aad;
+	        
+	        border:1px solid #314179;
+	        
+	        display:inline-block;
+	        color:#ffffff;
+	        text-decoration:none;
+
+	        float: left;
+			height:28px;
+			width:100px;
+			line-height: 28px;
+			text-align: center;
+			vertical-align: middle;
+			font-size: 12px;
+			font-family: Arial, Helvetica, sans-serif;
+			font-weight: normal;
+			color: #FFFFFF;
+			background-color: #000000;
+			text-shadow:1px 1px 1px inset;
+	        
+	    }
+	    .control-flex-button:hover {
+	        
+	        background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #5972a7), color-stop(1, #637aad));
+	        background:-moz-linear-gradient(top, #5972a7 5%, #637aad 100%);
+	        background:-webkit-linear-gradient(top, #5972a7 5%, #637aad 100%);
+	        background:-o-linear-gradient(top, #5972a7 5%, #637aad 100%);
+	        background:-ms-linear-gradient(top, #5972a7 5%, #637aad 100%);
+	        background:linear-gradient(to bottom, #5972a7 5%, #637aad 100%);
+	        filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#5972a7', endColorstr='#637aad',GradientType=0);
+	        
+	        background-color:#5972a7;
+
+	        -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=80)"; /* ie8  */
+		    filter:alpha(opacity=80);    /* ie5-7  */
+		    -moz-opacity:0.8;    /* old mozilla browser like netscape  */
+		    -khtml-opacity: 0.8;    /* for really really old safari */ 
+		    opacity: 0.8; 
+		    cursor: pointer;
+	    }
+	    .control-flex-button:active {
+	        position:relative;
+
+	        background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #008B8B), color-stop(1, #00688B));
+	        background:-moz-linear-gradient(top, #008B8B 5%, #00688B 100%);
+	        background:-webkit-linear-gradient(top, #008B8B 5%, #00688B 100%);
+	        background:-o-linear-gradient(top, #008B8B 5%, #00688B 100%);
+	        background:-ms-linear-gradient(top, #008B8B 5%, #00688B 100%);
+	        background:linear-gradient(to bottom, #008B8B 5%, #00688B 100%);
+	        filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#008B8B', endColorstr='#00688B',GradientType=0);
+	        
+	        background-color:#008B8B;
+	    }
+		.control-flex-search{
+			height:30px;
+			float:left;
+			position: relative;
+			vertical-align: top;
+		}
+		.control-flex-input{
+			width:298px;
+			height:20px;
+			border: 1px solid #d3d0d9;
+			padding-right:25px;
+			padding-left: 5px;
+			border-radius: 0px;
+		}
+		.control-flex-tip{
+			height:20px;
+			width:20px;
+			position: absolute;
+			right:4px;
+			top:4px;
+			background-size: 100% 100%;
+			background-repeat: no-repeat;
+		}
+		.control-flex-tip:hover{
+			-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=80)"; /* ie8  */
+		    filter:alpha(opacity=80);    /* ie5-7  */
+		    -moz-opacity:0.8;    /* old mozilla browser like netscape  */
+		    -khtml-opacity: 0.8;    /* for really really old safari */ 
+		    opacity: 0.8; 
+		}
+		.control-flex-tip-check,.control-flex-tip-error{
+			display: none;
+		}
+		.control-flex-tip-check{
+			background-image: url('/images/check_27.png');
+		}
+		.control-flex-tip-error{
+			background-image:url('/images/error.png');
+		}
+		.control-flex-tip-alert{
+			background-image:url('/images/alert.png');
+		}
+		.control-flex-tip-c{
+			height:40px;
+			line-height: 40px;
+			vertical-align: middle;
+			position: absolute;
+			top:35px;
+			right:0px;
+			display: none;
+		}
+		.control-flex-tip-inner{
+			position:absolute;
+			width:100%;
+			height:100%;
+		}
+		.control-flex-tip-text{
+			position: absolute;
+			right: 0px;
+			height: 30px;
+			line-height: 30px;
+			background-color: #FFF0F5;
+			-webkit-border-radius: 4px 4px 4px 4px;
+			-moz-border-radius: 4px 4px 4px 4px;
+			-o-border-radius: 4px 4px 4px 4px;
+			border-radius: 4px 4px 4px 4px;
+			border:1px solid #B0C4DE;
+			padding-right: 4px;
+			padding-left: 4px;
+			font-size: 10px;
+			color: #000000;
+			top:10px;
+			z-index: 9;
+			-webkit-box-shadow:0 0 2px 0 #aaa;  
+			-moz-box-shadow:0 0 2px 0 #aaa;  
+			-o-box-shadow:0 0 2px 0 #aaa;  
+			box-shadow:0 0 2px 0 #aaa;  
+			display: inline-block;
+		}
+		.control-flex-tip-text span{
+			display: inline-block;
+			white-space:nowrap;
+		}
+		.control-flex-tip-arrow{
+			margin-top: 4px;
+			height:10px;
+			width:10px;
+			-webkit-box-shadow:0 0 2px 0 #aaa;  
+			-moz-box-shadow:0 0 2px 0 #aaa;  
+			-o-box-shadow:0 0 2px 0 #aaa;  
+			box-shadow:0 0 2px 0 #aaa; 
+			border:1px solid #B0C4DE;
+			position: relative;
+			margin-right: 3px;
+			float:right;
+			-webkit-transform:rotate(45deg); 
+			-moz-transform:rotate(45deg); 
+			-o-transform:rotate(45deg);  
+			transform:rotate(45deg); 
+		}
+		.control-flex-tip-arrow-inner{
+			width:10px;
+			height:10px;
+			-webkit-transform:rotate(45deg); 
+			-moz-transform:rotate(45deg); 
+			-o-transform:rotate(45deg);  
+			transform:rotate(45deg); 
+			right: 9px;
+			float:right;
+			position: absolute;
+			z-index: 11;
+			top:6px;
+			background-color: #FFF0F5;
+		}
+		.control-flex-tip-arrow-outer{
+			top: 0px;
+			height:10px;
+			width:20px;
+			right: 5px;
+			position: absolute;
+			z-index:10;
+			overflow: hidden;
+			text-align: right;
+			overflow-y:hidden;
+		}
+	</style>
+		<div class='control-flex'>
+			<div class='control-flex-button'>
+				搜索
+			</div>
+			<div class='control-flex-search'>
+				<input type='text' name='searchName' id='searchKeyWord' class='control-flex-input' placeholder='请输入关键字查询'>
+				<div class='control-flex-tip control-flex-tip-check'>
+				</div>
+				<div class='control-flex-tip control-flex-tip-alert'>
+				</div>
+				<div class='control-flex-tip control-flex-tip-error'>
+				</div>
+				<div class='control-flex-tip-c'>
+					<div class='control-flex-tip-inner'> 
+						<div class='control-flex-tip-arrow-outer'>
+							<div class='control-flex-tip-arrow'>
+							</div>
+						</div>
+						<div class='control-flex-tip-arrow-inner'>
+						</div>
+						<div class='control-flex-tip-text'>
+							<span></span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src='/javascripts/searchInputFlexible.js'></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('#searchKeyWord').searchInputFlexible();
+		});
+	</script>

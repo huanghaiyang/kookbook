@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<%-include header%>
+<%-include indexSearch%>
+<%-include userReadStatus%>
+<link rel="stylesheet" type="text/css" href="/stylesheets/cooperateAuthors.css">
+<div class="container">
+	<div class='row'>
+		<div class='span12 span12_edit'>
+			<%-include cooperateAuthorsTab%>
+			<div class='editMain editMain1' id='editMainDiv'>
+				 <button class="btn btn-large btn-success" type="button" id='addAuthorBtn'>添加一条新的作者信息</button>
+				 <div class='editCols' id='editColsDiv'>
+				 	<form class="form-horizontal" id='editForm' method="post" action="/cooperation/editOneAuthor">
+				 		<%- partial('cooperateSubmitOptions',{'submitStatus':0,'publicStatus':0})%>
+						<fieldset id="form_field">
+							<div class="control-group">
+								<div class="control-label" for="chinesename">中文名:</div>
+								<div class="controls">
+									<input type="text" class="span2" id="chinesename" name="chinesename" placeholder='填写中文名称'>
+								</div>
+							</div>
+						 	<div class="control-group">
+								<div class="control-label" for="englishname">英文名:</div>
+								<div class="controls">
+									<input type="text" class="span2" id="englishname" name="englishname" placeholder='填写英文名称'>
+								</div>
+							</div>
+							<div class="control-group">
+								<div class="control-label" for="pencilnames">笔名或曾用名:</div>
+								<div class="controls">
+									<input type="text" class="span2" id="pencilnames" name="pencilnames" placeholder='填写笔名或曾用名'>
+									<p class="help-inline add_name_ico" title='添加添加一个笔名&中间名' id='addPNameIco' data-status='none'>+</p>
+								</div>
+							</div>
+							<div class="control-group">
+								<div class="control-label" for="sex">性别:</div>
+								<div class="controls">
+									<label class="radio inline">
+									  <input type="radio" name='sex' id="sex1" value="1"> 男
+									</label>
+									<label class="radio inline">
+									  <input type="radio" name='sex' id="sex2" value="0"> 女
+									</label>
+								</div>
+							</div>
+							<div class="control-group">
+								<div class="control-label" for="country">国籍:</div>
+								<div class="controls">
+									<input type="text" class="span2" id='country' name='country' data-add-addAfter="false" placeholder='请选择国籍'>
+								</div>
+							</div>
+							<div class="control-group">
+								<div class="control-label" for="race">民族:</div>
+								<div class="controls">
+									<input type="text" class="span2" id='race' name='race' placeholder='请填写名族信息'>
+								</div>
+							</div>
+							<div class="control-group">
+								<div class="control-label" for="address_birth">出生地:</div>
+								<div class="controls">
+									<input type="text" class="span2" id='address_birth' name='address_birth' placeholder='请填写出生地'>
+								</div>
+							</div>
+							<div class="control-group">
+								<div class="control-label" for="birthday">出生日期:</div>
+								<div class="controls">
+									<input type="text" class="span2" id='birthday' name='birthday' placeholder='出生日期'>
+								</div>
+							</div>
+							<div class="control-group">
+								<div class="control-label" for="job">职业:</div>
+								<div class="controls">
+									<input type="text" class="span2" id='job' name='job' placeholder='请填写职业信息'>
+								</div>
+							</div>
+							<div class="control-group">
+								<div class="control-label" for="graduateSchool">毕业院校:</div>
+								<div class="controls">
+									<input type="text" class="span2" id='graduateSchool' name='graduateSchool' placeholder='请填写毕业院校'>
+								</div>
+							</div>
+							<div class="control-group">
+								<div class="control-label" for="worth">成就&奖项:</div>
+								<div class="controls">
+									<input type="text" class="span2" id='worth' name='worth' placeholder='请添加奖项'>
+									<p class="help-inline add_name_ico" title='添加添加一个成就' id='addWorthIco' data-status='none'>+</p>
+								</div>
+							</div>
+							<div class="control-group">
+								<div class="control-label" for="introduction">个人履历:</div>
+								<div class="controls">
+									<textarea id='introduction' name='introduction' placeholder='请添加简单介绍'></textarea>
+								</div>
+							</div>
+							<div class="form-actions">
+								<button class="btn btn-primary" type="submit">添加</button>
+							</div>
+						</fieldset>
+					</form>
+					<a id='countryAhref' href='#countrySelectorDiv'></a>
+					<div style='display:none;'>
+						<div class='countrySelector' id='countrySelectorDiv'>
+							<div class='countrySelectorTopBar'>
+								<span style='margin-left:5px;'>国籍选择</span>
+								<span class='countrySelectorCloseBtn' id='countrySelectorCloseBtn'>
+									x
+								</span>
+								<div class='countrySelectorMain'>
+									<div class='countrySelectorRow'>
+										<div class='margin-right:0px;float:right;width:85%;display:block;'>
+											<span class='countryName'>
+												中国
+											</span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				 </div>
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript" src='/javascripts/fancybox/jquery.fancybox-1.3.4.js'></script>
+<script type="text/javascript" src='/javascripts/cooperateAuthor.js'></script>
+<link rel="stylesheet" href="/javascripts/fancybox/jquery.fancybox-1.3.4.css" type='text/css'>
+<%-partial('editAndAddTempAuthorCanlender',{editable:false,inputRender:'birthday'})%>

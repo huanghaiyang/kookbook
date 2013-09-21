@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<%-include header%>
+<%-include indexSearch%>
+<%-include userReadStatus%>
+<style type="text/css">
+	.titleBar{
+		height:30px;
+		line-height: 30px;
+		text-align: center;
+		vertical-align: middle;
+		font-size:14px;
+		border-bottom:1px dashed #E5E5E5;
+	}	
+	.container_div{
+		background-color: #FAFAFA;
+	}
+	.editBar{
+		height:40px;
+		line-height: 40px;
+		float:left;
+		width: 90%;
+		text-align: left;
+		font-size: 14px;
+		margin-top: 16px;
+		margin-left: 0%;
+		background-color: #2EB1B6;
+		color:#FFFFFF;
+		opacity: .8;
+		position:relative;
+		-webkit-transition:all 0.5s ease;
+		-moz-transition:all 0.5s ease;
+		-ms-transition:all 0.5s ease;
+		-o-transition:all 0.5s ease;
+		transition:all 0.5s ease;
+		-webkit-border-radius:10px 10px 10px 10px;
+		-moz-border-radius:10px 10px 10px 10px;
+		border-radius:10px 10px 10px 10px;
+	}
+	.editBar:first-child{
+		margin-top: 0px;
+	}
+	.editText{
+		margin-left: 20px;
+	}
+	.editDiv{
+		width:90%;
+		margin-left: 5%;
+		background-color: #FAFAFA;
+		height:360px;
+	}
+	.editBar:hover{
+		opacity: .7;
+		cursor: pointer;
+	}
+	.editBtn{
+		height:10px;
+		width:10px;
+		-webkit-border-radius:5px 5px 5px 5px;
+		-moz-border-radius:5px 5px 5px 5px;
+		border-radius:5px 5px 5px 5px;
+		background-color: #d3d0d9;
+		display: inline-block;
+		left: 15%;
+		position: absolute;
+		top:15px;
+		-webkit-transition:all 0.5s ease;
+		-moz-transition:all 0.5s ease;
+		-ms-transition:all 0.5s ease;
+		-o-transition:all 0.5s ease;
+		transition:all 0.5s ease;
+	}
+</style>
+<div class="container container_div">
+	<div class='row'>
+		<div class='span12'>
+			<div class='titleBar'>
+				编辑最全的图书百科
+			</div>
+		</div>
+	</div>
+	<div class='row'>
+		<div class='span3'>
+			<%-include cooperateAllOfMine%>
+		</div>
+		<div class='span9' style='text-align:center;'>
+			<div class='editDiv'>
+				<div class='editBar' action='/cooperation/cooperateAuthors' title='点击进入到编辑作者页面'>
+					<span class='editText'>编辑作者</span>
+					<span class='editBtn'></span>
+				</div>
+				<div class='editBar' action='/cooperation/cooperateClauses' title='点击进入到条目编辑页面'>
+					<span class='editText'>编辑条目</span>
+					<span class='editBtn'></span>
+				</div>
+				<div class='editBar' action='/cooperation/cooperateBooksAdd' title='点击进入到编辑书籍页面'>
+					<span class='editText'>编辑书籍</span>
+					<span class='editBtn'></span>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+	$(document).ready(function () {
+		$('.editBar').each(function(index){
+			$(this).bind('mouseover',function(event){
+				var $t = $(this);
+				$t.css({
+					'borderRadius':'2px',
+					'margin-left':'0%'
+				});
+				$t.children('.editBtn').each(function(i){
+					var $e = $(this);
+					$e.css({
+						'left':'50%'
+					});
+				});
+				$t.children('.editText').each(function(i){
+					var $e = $(this);
+					$e.css({
+						'textDecoration':'underline'
+					});
+				});
+			});
+			$(this).bind('mouseout',function(event){
+				var $t = $(this);
+				$t.css({
+					'borderRadius':'5px',
+					'margin-left':'0%'
+				});
+				$t.children('.editBtn').each(function(i){
+					var $e = $(this);
+					$e.css({
+						'left':'15%'
+					});
+				});
+				$t.children('.editText').each(function(i){
+					var $e = $(this);
+					$e.css({
+						'textDecoration':'none'
+					});
+				});
+			});
+			$(this).bind('click',function(event){
+				var action = $(this).attr('action') ; 
+				window.location.href = action ;
+			});
+		});
+	});
+</script>
+<%-include bottomBar%>

@@ -1,0 +1,88 @@
+#header {
+	background: #7F99BE url(/images/hrbu.png) repeat-x center;
+	background-size: 100% 100%;
+}
+
+#header h1 {
+	font-size: 16px;
+	color: #fff;
+	padding: 3px 10px;
+	font-family: "Î¢ÈíÑÅºÚ", "ºÚÌå"
+}
+
+.tabs {
+	
+}
+
+.tabs {
+	background-image: url(../images/everydayicons_009.png) !important;
+	background-size: 100% 100%;
+}
+
+.manage {
+	background-image: url(../images/menuPanel/LiveJournal_006.png)
+		!important;
+	background-size: 100% 100%;
+}
+
+.uploadmanage {
+	background-image: url(../images/Chrome_INSIGHT_001.png) !important;
+	background-size: 100% 100%;
+}
+
+.avatar {
+	background-image: url(../images/DressIt_015.png) !important;
+	background-size: 100% 100%;
+}
+
+.upfile {
+	background-image: url(../images/sketchy_paper_017.png) !important;
+	background-size: 100% 100%;
+}
+
+.adminmanage {
+	background-image: url(../images/sketchy_paper_004.png) !important;
+	background-size: 100% 100%;
+}
+
+.adminfileup {
+	background-image: url(../images/sketchy_paper_006.png) !important;
+	background-size: 100% 100%;
+}
+
+.home {
+	line-height: 30px;
+	background-image: url(../images/earth_005.png) !important;
+	background-size: 100% 100%;
+}
+
+.approve {
+	background-image: url(../images/02.png) !important;
+	background-size: 100% 100%;
+	width: 30px;
+}
+
+.refresh {
+	line-height: 30px;
+	background-size: 100% 100%;
+	background-color: #ffffff;
+	border: solid 1px #000000;
+}
+
+.icon-menu {
+	background-image: url(../images/menu.png) !important;
+	background-size: 100% 100%;
+}
+
+._material_ {
+	background-image: url(../images/ugtnamdz.bmp) !important;
+	background-size: 100% 100%;
+}.material_kind {
+	background-image: url(../images/a0c61mgi.bmp) !important;
+	background-size: 100% 100%;
+}
+.export {
+	background-image: url(../images/bsp19hez.bmp) !important;
+	background-size: 100% 100%;
+	width:20px;
+}

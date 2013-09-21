@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<style type="text/css">
+	.star5 , .star4 , .star3 , .star2 ,.star1{
+		height:20px;
+		background-image: url('/images/star/full.png') ;
+		background-repeat: repeat-x;
+		background-size:  15px auto;
+	}
+	.star5{
+		width:75px;
+	}
+	.star4{
+		width:60px;
+	}
+	.star3{
+		width:45px;
+	}
+	.star2{
+		width:30px;
+	}
+	.star1{
+		width:15px;
+	}
+	.tip{
+		width:100px;
+	}
+</style>
+<%
+	var personNumber = parseInt(star.five , 10) + parseInt(star.four , 10) + parseInt(star.three , 10) + parseInt(star.two , 10) + parseInt(star.one , 10) ;
+	var total = parseInt(star.five , 10) *5 + parseInt(star.four , 10)*4 + parseInt(star.three , 10)*3 + parseInt(star.two , 10)*1 + parseInt(star.one , 10)
+	var per = Math.ceil(total / personNumber) ; 
+%>
+<div style='width:100%;height:20px;'>
+	<%if(per ==5){%>
+		<div class='star5'></div>
+	<%}else if(per ==4){%>
+		<div class='star4'></div>
+	<%}else if(per ==3){%>
+		<div class='star3'></div>
+	<%}else if(per ==2){%>
+		<div class='star2'></div>
+	<%}else if(per ==1){%>
+		<div class='star1'></div>
+	<%}else{}if(personNumber == 0){%>
+		<div class='tip'>(没有评价)</div>
+	<%}else{%>
+		<div class='tip'>(<%=personNumber%>人评价)</div>
+	<%}%>
+</div>

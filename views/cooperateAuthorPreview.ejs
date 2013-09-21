@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<%-include header%>
+<%-include indexSearch%>
+<%-include userReadStatus%>
+<style type="text/css">
+	#tipText{
+		width:100%;
+		font-size:12px;
+		text-align: center;
+		vertical-align: middle;
+		background-color: #FAFAFA;
+		border-left:1px solid #F4F4F4;
+		border-right:1px solid #F4F4F4;
+		border-bottom:1px solid #F4F4F4;
+
+		-moz-user-select: none;
+ 	   -webkit-user-select: none;
+
+ 	    font-size: 16px;
+		font-weight: normal;
+		margin: 0 0 0 -2px;
+		line-height: 76px;
+		color: black;
+		vertical-align: baseline;
+
+		-webkit-margin-before: 0;
+		-webkit-margin-after: 0;
+		-webkit-margin-start: 0;
+		-webkit-margin-end: 0px;
+		margin: 0;
+		font-family: 'Microsoft Yahei', Verdana, Simsun;
+	}
+	#preview{
+		height:400px;
+		width:100%;
+		margin-top: 10px;
+	}
+	#avatar{
+		height:50px;
+		width:100%;
+	}
+	#avatarShow{
+		height:50px;
+		border:1px solid #e4e4e4;
+		line-height: 50px;
+		vertical-align: middle;
+		text-align: center;
+		width:100%;
+	}
+	.infos{
+		display: block;
+		height:1800px;
+		position: relative;
+	}
+</style>
+<div class="container">
+	<div class='row'>
+		<div class='span12'>
+			<div id='tipText'>
+				当前正在浏览&nbsp;&nbsp;&nbsp;<a href='/cooperation/cooperateAuthorEdit/<%=tempAuthor._id%>'><%=tempAuthor.chinesename%></a>
+			</div>
+			<div id='preview'>
+				<div id='avatar'>
+					<div id='avatarShow'>
+						照片正在等待管理员添加
+					</div>
+				</div>
+				<div class='infos'>
+					<%-include cooperateAuthorInfo%>
+				</div>
+				<%-include bottomBar%>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+	(function($) {
+		$.fn.SlidTipsUp = function(options) {debugger;
+			var $t = $(this) ; 
+			var resizeMinHeight = function(){
+				$t.animate({
+					'height' : '30px',
+					'lineHeight':'30px'
+				},500 , function(){
+					$('.info').smallPanelGrag({
+						'shorten':0.01
+					});
+				});
+			};
+			resizeMinHeight() ; 
+			$t.bind('mouseover',function(event){
+				$t.css({
+					'cursor' : 'pointer'
+				}) ; 
+			});
+			$t.bind('mousedown',function(event){
+				$(document).bind('mousemove' , function(ev){
+					$t.css({
+						'cursor' : 'row-resize'
+					}) ;
+					var $top = $t.offset().top ; 
+					$t.css({
+						'height' : ev.pageY - $top + 'px' , 
+						'lineHeight' : ev.pageY - $top + 'px'
+					}) ; 
+				});
+			}) ; 
+			$t.bind('mouseup',function(){
+				$(document).unbind('mousemove');
+				resizeMinHeight();
+			}) ; 
+		};
+	})(jQuery);
+	
+	$(document).ready(function(){
+		var i = 0 ; 
+		$('.info').each(function(index , item){
+			var $item = $(item) ;
+			var h = 50 ; 
+			if(i === 0 )
+			{	
+				$item.css({
+					'top' :'10px'
+					}) ; 
+			} 
+			else
+			{
+				$item.css({
+					'top' : i * (h + 10) + 10 + 'px'
+					}) ; 
+			}
+			i ++ ; 
+		}) ; 
+		$('#tipText').SlidTipsUp() ; 
+	});
+</script>

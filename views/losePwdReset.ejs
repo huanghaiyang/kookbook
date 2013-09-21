@@ -1,0 +1,149 @@
+<!DOCTYPE HTML>
+<%-include header%>
+<%-include indexSearch%>
+<html>
+	<head>
+		<title>
+			重置密码
+		</title>
+	</head>
+	<style type="text/css">
+	    body{
+	    	color: #000000;
+	    	background-attachment: fixed;
+	    }
+	    body a{
+	    	color:#000000;
+	    }
+		.lose-pwd-title{
+			height:30px;
+			margin-top: 20px;
+			line-height: 30px;
+			text-align: center;
+			font-weight: bold;
+		}
+		.lose-pwd-head{
+			height:50px;
+			line-height: 50px;
+			font-size: 30pt;
+			font-weight: bold;
+			text-align: center;
+			margin-top: 50px;
+		}
+		.common{
+			vertical-align: middle;
+			width: 600px;
+			margin-left: auto;
+			margin-right: auto;
+		}
+		.lose-pwd-confirm{
+			height:100px;
+			vertical-align: top;
+			text-align: center;
+		}
+		.lose-pwd-control{
+			text-align: center;
+			margin-top: 20px;
+			display: block;
+		}
+		.lose-pwd-control{
+			height:30px;
+		}
+		.lose-pwd-input{
+			border-left: 5px solid #CD2626;
+			padding-left: 10px;
+			border-radius: 5px 0px 0px 5px;
+		}
+		.lose-pwd-submit-btn{
+			width:226px;
+			border-radius: 5px 5px 5px 5px;
+		}
+
+	    .lose-pwd-submit-btn {
+	        
+	        -moz-box-shadow:inset 0px 1px 0px 0px #7a8eb9;
+	        -webkit-box-shadow:inset 0px 1px 0px 0px #7a8eb9;
+	        box-shadow:inset 0px 1px 0px 0px #7a8eb9;
+	        
+	        background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #637aad), color-stop(1, #5972a7));
+	        background:-moz-linear-gradient(top, #637aad 5%, #5972a7 100%);
+	        background:-webkit-linear-gradient(top, #637aad 5%, #5972a7 100%);
+	        background:-o-linear-gradient(top, #637aad 5%, #5972a7 100%);
+	        background:-ms-linear-gradient(top, #637aad 5%, #5972a7 100%);
+	        background:linear-gradient(to bottom, #637aad 5%, #5972a7 100%);
+	        filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#637aad', endColorstr='#5972a7',GradientType=0);
+	        
+	        background-color:#637aad;
+	        
+	        border:1px solid #314179;
+	        
+	        display:inline-block;
+	        color:#ffffff;
+	        font-family:arial;
+	        font-size:13px;
+	        font-weight:bold;
+	        padding:6px 12px;
+	        text-decoration:none;
+	        
+	    }
+	    .lose-pwd-submit-btn:hover {
+	        
+	        background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #5972a7), color-stop(1, #637aad));
+	        background:-moz-linear-gradient(top, #5972a7 5%, #637aad 100%);
+	        background:-webkit-linear-gradient(top, #5972a7 5%, #637aad 100%);
+	        background:-o-linear-gradient(top, #5972a7 5%, #637aad 100%);
+	        background:-ms-linear-gradient(top, #5972a7 5%, #637aad 100%);
+	        background:linear-gradient(to bottom, #5972a7 5%, #637aad 100%);
+	        filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#5972a7', endColorstr='#637aad',GradientType=0);
+	        
+	        background-color:#5972a7;
+	    }
+	    .lose-pwd-submit-btn:active {
+	        position:relative;
+	        top:1px;
+	    }
+	    .lose-pwd-a-m{
+	    	font-weight: bold;
+	    	height: 20px;
+	    	width:60px;
+	    }
+	    .lose-pwd-a-m:first-child{
+	     	margin-right: 5px;
+	    }
+	    .lose-pwd-a-m:last-child{
+			margin-left: 5px;	    	
+	    }
+	    .lose-pwd-red{
+	    	width: 226px;
+	    	height:20px;
+	    	display: block;
+	    	text-align: center;
+	    }
+	    .lose-bottom-line{
+	    	border-bottom: 2px solid #CD2626;
+	    	width:226px;
+	    	margin-right: auto;
+			margin-left:auto;
+	    }
+	</style>
+	<body>
+		<div class='lose-pwd-head common'>
+			KookBook
+		</div>
+		<div class='lose-pwd-title common'>
+			与您一起分享精彩阅读
+		</div>
+		<div class='lose-pwd-control common'>
+			<input type='password' name='repassword' placeholder='密  码' class='lose-pwd-input'>
+		</div>
+		<div class='lose-pwd-control common'>
+			<button class='lose-pwd-submit-btn'>确认重置</button>
+		</div>
+		<div class='lose-pwd-control common'>
+			<div class='lose-pwd-reds'>
+				<a href='/' class='lose-pwd-a-m'>←&nbsp;&nbsp;返回首页</a>·
+				<a href='/login'class='lose-pwd-a-m'>登&nbsp;&nbsp;&nbsp;&nbsp;录&nbsp;&nbsp;→</a>
+			</div>
+		</div>
+	</body>
+</html>

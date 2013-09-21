@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html>
+<%-include header%>
+<style type="text/css" media="screen">
+	a{
+		cursor: pointer;
+	}
+	.book_name_bar{
+		width:100%;
+		color:#FD9B1C;
+		margin-top:5px;
+		margin-bottom:5px;
+	}
+	.book_one{
+		width:100%;
+		height:400px;
+	}
+	.book_info{
+		width:100%;
+		height:140px;
+		display:block;
+		text-align: left;
+		margin-top: 10px;
+	}
+	.book_img_div{
+		vertical-align: middle;
+		float:left;
+		height:100%;
+		width:100px;
+	}
+	.book_img{
+		height:100%;
+		width:100%;
+	}
+	.book_others{
+		float: left;
+		height:100%;
+		margin-left:10px;
+		color:#5D5755;
+	}
+	.book_others a{
+		color:blue;
+	}
+	.book_others a:hover{
+		color:#FD9B1C;
+	}
+	.book_others a:active{
+		color:red;
+	}
+	.info_text{
+		color:#000000;
+	}
+	.book_interest{
+		width:100%;
+		height:30px;
+		margin-top:25px;
+		vertical-align: top ; 
+		text-align: left;
+	}
+	.ul_star{
+		list-style:none;
+		height:12px;
+		margin-left:0px;
+		float:left;
+		display: inline-block;
+		margin-top:2px;
+	}
+	.li_star{
+		float:left;
+		height:12px;
+		width:12px;
+		padding-top:0px;
+		display:block;
+		line-height:10px;
+	}
+	.ul_star_big{
+		list-style:none;
+		height:16px;
+		margin-left:0px;
+		float:left;
+		display: inline-block;
+		margin-top:2px;
+	}
+	.li_star_big{
+		float:left;
+		height:16px;
+		width:16px;
+		padding-top:0px;
+		display:block;
+		line-height:10px;
+	}
+	.li_star_bar{
+		display: inline-block;
+		float:left;
+		padding-top:0px;
+	}
+	.li_img{
+		height:100%;
+		width:100%;
+		vertical-align:middle;
+		margin-top:0px;
+		cursor: pointer;
+	}
+	.book_star{
+		vertical-align: middle;
+		width:100%;
+		height:20px;
+		margin-top:10px;
+		vertical-align: top ; 
+		text-align: left;
+	}
+	.loading_img{
+		height:12px;
+		width:12px;
+		display: none;
+	}
+	#star_text{
+		color: red;
+	}
+	.reads_me , .book_favorites_cls{
+		vertical-align: middle;
+		width:100%;
+		height:20px;
+		margin-top:5px;
+		vertical-align: top ; 
+		text-align: left;
+	}
+	.book_favorites_cls{
+		float: left;
+	}
+	.reads_me{
+		display:none;
+	}
+	.alter_reads_div{
+		float:left ; 
+		width:100px;
+	}
+	.reads_me_span{
+		float:left ; 
+		margin-left:0px;
+		color:green;
+	}
+	.alter_reads_a{
+		margin-right: 5px;
+		cursor: pointer;
+	}
+	.fav_img_cls{
+		height:16px;
+		width:16px;
+		vertical-align: top;
+	}
+	.memo_div{
+		margin-top: 10px;
+		width:100%;
+	}
+	.tag_cls_ , .tag_cls{
+		width:400px;
+		border:1px solid #F9CB97;
+	}
+	.tag_cls{
+		height:120px;
+	}
+	.tag_cls_{
+		height:200px;
+	}
+	#call_success{
+		width:300px;
+		height:70px;
+		border:1px solid #F9CB97;
+	}
+	#tag_name{
+		height:14px;
+		width:250px;
+		font-size: 10px;
+		padding-left:0px;
+	}
+	.p_tag{
+		vertical-align: middle;
+		height:30px;
+		line-height: 30px;
+		text-align: left;
+		margin-left: 0px;
+	}
+	.tag_title{
+		height:30px;
+		background-color: #F9CB97 ; 
+		color:#000000;
+		text-align: left;
+		vertical-align: middle;
+		line-height: 30px;
+	}
+	.tag_container{
+		margin-left: 5px;
+	}
+	.tag_bottom{
+		text-align: right;
+		padding-right: 0px;
+		position: absolute;
+		bottom:0px;
+		width:95%;
+	}
+	.tag_one{
+		margin-right: 5px;
+		float: left;
+		margin-left:0px;
+	}
+	#tag_me_c{
+		margin-top:4px;
+		margin-bottom:4px;
+		width:100%;
+		vertical-align: top;
+		display: inline-block;
+	}
+	#tag_me{
+		width:85%;
+		display: inline-block;
+	}
+	.v_tag{
+		height:100%;
+		vertical-align: top;
+		color:green;
+	}
+	.del_span_cls , .del_span_cls_{
+		-webkit-transition:all 0.3s ease;
+		-moz-transition:all 0.3s ease;
+		-ms-transition:all 0.3s ease;
+		-o-transition:all 0.3s ease;
+		transition:all 0.3s ease;
+		-webkit-border-radius:3px 3px 3px 3px;
+		-moz-border-radius:3px 3px 3px 3px;
+		border-radius:3px 3px 3px 3px;
+		color: #000000;
+		padding-left:1px;
+		padding-right:1px;
+		vertical-align: middle;
+		cursor: pointer;
+		margin:2px;
+	}
+	.del_span_cls_{
+		background-color: #d3d0d9;
+	}
+	.del_span_cls:hover{
+		text-decoration:underline;
+	}
+	.delete_tag_c{
+		width:100%;
+	}
+	.book_star_i{
+		width:100%;
+		float:left;
+	}
+	#addBookAppraises{
+		height:300px;
+		width:400px;
+	}
+	.starOne{
+		background-image:url('/images/');
+	}
+</style>
+<%-include indexSearch%>
+<%-include userReadStatus%>
+<div class="container">
+	<div class="row">
+		<div class='span12'>
+		<%if(locals.book != null){
+			%>
+			<div class='book_one'>
+				<div class='book_name_bar'>
+					<h3><%= locals.book.name%></h3>
+				</div>
+				<%- partial('bookInfoSimple') %>
+				<div class="book_interest" id="book_interest_div">
+					<button class="btn btn-primary" type="button" sts="want" id="want_btn">想读</button>
+					<button class="btn btn-success" type="button" sts="now" id="now_btn">在读</button>
+					<button class="btn btn-warning" type="button" sts="already" id="already_btn">读过</button>
+				</div>
+				<%if(user != null){%>
+					<div class="book_star" id="book_star_div">
+						<span class='info_text' style='float:left;color:green;'>我的评分:</span>
+						<ul class="ul_star" id="book_ul_star" title="点击来评价" initStar=''><li class="li_star"><img src="/images/star/star-rating-empty.png" class="li_img" data-rate-number='0' title='很差'></li><li class="li_star"><img src="/images/star/star-rating-empty.png" class="li_img" data-rate-number='1' title='较差'></li><li class="li_star"><img src="/images/star/star-rating-empty.png" class="li_img" data-rate-number='2' title='还可以'></li><li class="li_star"><img src="/images/star/star-rating-empty.png" class="li_img" data-rate-number='3' title='很好'></li><li class="li_star"><img src="/images/star/star-rating-empty.png" class="li_img" data-rate-number='4' title='值得推荐'></li></ul>
+						<span id='star_text'></span>
+						<img src='/images/loading-1.gif' class='loading_img' id='loading_img_status'>
+					</div>
+					<div class="book_star">
+						<span class='info_text' style='color:green;'>
+							评价:
+						</span>
+						<span>
+							<a href='#addBookAppraises' id='addBookAppraises_a'>我的评价</a>
+						</span>
+						<span>
+							<a href='/book/viewBookAppraises?bookid=<%=locals.book._id%>' target='_self'>查看所有</a>
+						</span>
+					</div>
+					<div style='display:none;'>
+						<div id='addBookAppraises'>
+							<p class='tag_title'>
+								<span style='margin-left:5px;'>
+									添加或修改评价
+								</span>
+							</p>
+							<div style='vertical-align:middle;text-align:center;'>
+								<div style='width:90%;display:inline-block;text-align:left;'>标题:</div>
+								<input type='text' name='appraiseTitle' id='appraiseTitle' style='width:90%;' placeholder="添加标题" autocomplete="off" autofocus='true' required='true'>
+								<div style='width:90%;display:inline-block;text-align:left;'>内容:</div>
+								<textarea type='text' name='appraise' id='appraise' style='width:90%;height:130px;' placeholder="添加内容" autocomplete="off" required='true'></textarea>
+								<div style='width:90%;display:inline-block;text-align:right;'>
+									<input type='button' name='okAppraise' id='okAppraise' value='确定'>
+									<input type='button' name='cancel_Appraise' id='cancel_Appraise' value='取消'>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="reads_me" id="reads_status">
+					</div>
+						<div id="tag_me_c">
+							<span class='info_text v_tag'>标签:</span>
+							<div id="tag_me">
+							</div>
+						</div>
+						<div class='book_favorites_cls' id='book_favorites'>
+							<span class='info_text v_tag'>定义:</span>
+							<span title='属于你自己的分类' style='vertical-align:middle;'><a id='fav_book_a' href='#tag'>添加标签关系</a></span>
+							<span title='删除标签' style='margin-left:10px;'><a id='fav_book_a_del' href='#tag_del'style='vertical-align:middle;'>删除标签关系</a></span>
+						</div>
+				<%}%>
+				<div class="book_star">
+						<%
+							var star_get = locals.book.star ; 
+							var one = parseInt(star_get.one ? star_get.one : 0) ; 
+							var two = parseInt(star_get.two ? star_get.two : 0) ; 
+							var three = parseInt(star_get.three ? star_get.three : 0) ; 
+							var four = parseInt(star_get.four ? star_get.four : 0) ; 
+							var five = parseInt(star_get.five ? star_get.five : 0) ;
+							var total = one + two +  three + four + five ;
+							var per = Math.round(parseFloat((one + two*2 +three*3　+ four*4 + five*5)/total) * 10)/10 ; 
+						%>
+						<div class="book_star_i">
+							<ul class="ul_star_big"><li class="li_star_big"><img src="/images/star/full.png" class="li_img"></li><li class="li_star_big"><img src="/images/star/full.png" class="li_img"></li><li class="li_star_big"><img src="/images/star/full.png" class="li_img"></li><li class="li_star_big"><img src="/images/star/full.png" class="li_img"></li><li class="li_star_big"><img src="/images/star/full.png" class="li_img"></li>
+								<li class="li_star_big" style='vertical-align:middle;line-height:16px;'><%=isNaN(per) ? 0 : per%></li></ul>
+						</div>
+						<div class="book_star_i">
+							<a>(<%=total%>人评分)</a>
+						</div>
+						<div class="book_star_i">
+							<ul class="ul_star"><li class="li_star"><img src="/images/star/full.png" class="li_img"></li><li class="li_star"><img src="/images/star/full.png" class="li_img"></li><li class="li_star"><img src="/images/star/full.png" class="li_img"></li><li class="li_star"><img src="/images/star/full.png" class="li_img"></li><li class="li_star"><img src="/images/star/full.png" class="li_img"></li>
+								<li class="li_star_bar"><div style='background-color:#F9CB97;width:<%=isNaN(100*parseFloat(five/total)) ? 0 : 100*parseFloat(five/total)%>px;height:15px;margin-left:5px;'></div></li><li class="li_star"><%=(isNaN(Math.round(parseFloat(five/total)*100)) ? 0 : Math.round(parseFloat(five/total)*100)) + '%' %></li>
+								</ul>
+						</div>
+						<div class="book_star_i">
+							<ul class="ul_star"><li class="li_star"><img src="/images/star/full.png" class="li_img"></li><li class="li_star"><img src="/images/star/full.png" class="li_img"></li><li class="li_star"><img src="/images/star/full.png" class="li_img"></li><li class="li_star"><img src="/images/star/full.png" class="li_img"></li><li class="li_star"><img src="/images/star/star-rating-empty.png" class="li_img"></li><li class="li_star_bar"><div style='background-color:#F9CB97;width:<%=isNaN(100*parseFloat(four/total))?0 : 100*parseFloat(four/total)%>px;height:15px;margin-left:5px;'></div></li><li class="li_star"><%=(isNaN(Math.round(parseFloat(four/total)*100))?0:Math.round(parseFloat(four/total)*100)) + '%' %></li></ul>
+						</div>
+						<div class="book_star_i">
+							<ul class="ul_star"><li class="li_star"><img src="/images/star/full.png" class="li_img"></li><li class="li_star"><img src="/images/star/full.png" class="li_img"></li><li class="li_star"><img src="/images/star/full.png" class="li_img"></li><li class="li_star"><img src="/images/star/star-rating-empty.png" class="li_img"></li><li class="li_star"><img src="/images/star/star-rating-empty.png" class="li_img"></li><li class="li_star_bar"><div style='background-color:#F9CB97;width:<%=isNaN(100*parseFloat(three/total))?0:100*parseFloat(three/total)%>px;height:15px;margin-left:5px;'></div></li><li class="li_star"><%=(isNaN(Math.round(parseFloat(three/total)*100))?0:Math.round(parseFloat(three/total)*100)) + '%' %></li></ul>
+						</div>
+						<div class="book_star_i">
+							<ul class="ul_star"><li class="li_star"><img src="/images/star/full.png" class="li_img"></li><li class="li_star"><img src="/images/star/full.png" class="li_img"></li><li class="li_star"><img src="/images/star/star-rating-empty.png" class="li_img"></li><li class="li_star"><img src="/images/star/star-rating-empty.png" class="li_img"></li><li class="li_star"><img src="/images/star/star-rating-empty.png" class="li_img"></li><li class="li_star_bar"><div style='background-color:#F9CB97;width:<%=isNaN(100*parseFloat(two/total))?0:100*parseFloat(two/total)%>px;height:15px;margin-left:5px;'></div></li><li class="li_star"><%=(isNaN(Math.round(parseFloat(two/total)*100))?0:Math.round(parseFloat(two/total)*100)) + '%' %></li></ul>
+						</div>
+						<div class="book_star_i">
+							<ul class="ul_star"><li class="li_star"><img src="/images/star/full.png" class="li_img"></li><li class="li_star"><img src="/images/star/star-rating-empty.png" class="li_img"></li><li class="li_star"><img src="/images/star/star-rating-empty.png" class="li_img"></li><li class="li_star"><img src="/images/star/star-rating-empty.png" class="li_img"></li><li class="li_star"><img src="/images/star/star-rating-empty.png" class="li_img"></li><li class="li_star_bar"><div style='background-color:#F9CB97;width:<%=isNaN(100*parseFloat(one/total))?0:100*parseFloat(one/total)%>px;height:15px;margin-left:5px;'></div></li><li class="li_star"><%=(isNaN(Math.round(parseFloat(one/total)*100))?0:Math.round(parseFloat(one/total)*100)) + '%' %></li></ul>
+						</div>
+					</div>
+				<div style='display:none;'>
+					<div id='tag' class='tag_cls'>
+						<p class='tag_title'>
+							<span style='margin-left:5px;'>
+								建立标签关系
+							</span>
+						</p>
+						<div class='tag_container'>
+							<p style='margin-left:0px;margin-bottom:0px;'>
+								<span>
+									标签(多个标签请用逗号,分隔)
+								</span>
+							</p>
+							<p class='p_tag'>
+								<input type='text' id='tag_name' name='tag_name' tag-number='0'>1-10个字符
+							</p>
+							<div>
+								<div class='tag_bottom'>
+									<input type='button' name='submit_btn' id='submit_btn' value='确定'>
+									<input type='button' name='cancel_btn' id='cancel_btn' value='关闭'>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div style='display:none;'>
+					<div id='tag_del' class='tag_cls_'>
+						<p class='tag_title'>
+							<span style='margin-left:5px;'>
+								删除标签关系
+							</span>
+						</p>
+						<div id='delete_tag_c'>
+
+						</div>
+						<div class='tag_container'>
+							<div>
+								<div class='tag_bottom'>
+									<input type='button' name='submit_btn' id='delete_btn' value='删除'>
+									<input type='button' name='cancel_btn' id='cancel_btn_' value='关闭'>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<a id='call_success_trigger' href='#call_success' style='display:none;'></a>
+				<div style='display:none;'>
+					<div id='call_success'>
+						<p class='tag_title'>
+							<span style='margin-left:5px;'>
+								提示信息
+							</span>
+						</p>
+						<div style='vertical-align:middle;text-align:center;'>
+						操作成功!
+						</div>
+					</div>
+				</div>
+				<div style='margin-top:50px;'>
+					<span class='info_text' style='font-size:16px;color:green;'>作者简介</span>
+					<%
+					var authors = locals.book.authors ; 
+					for(var i = 0 ; i < authors.length ; i ++)
+					{
+						%>
+							<span><a href=''><%=authors[i].name%></a></span>
+						<%
+					}
+					%>
+					<%
+						for(var i = 0 ; i < authors.length ; i ++)
+						{
+							%>
+								<div class='memo_div' style='color:#C65C3F;'><%=authors[i].name?authors[i].name+':':''%>
+								</div>
+								<div class='memo_div' style='text-indent:2em;'><%-authors[i].introduction?authors[i].introduction:''%>
+								</div>
+							<%
+						}
+					%>
+				</div>
+				<div style='margin-top:50px;'>
+					<span class='info_text' style='font-size:16px;color:green;'>内容简介</span>
+					<div class='memo_div'  style='text-indent:2em;'>
+						<%-locals.book.memo && locals.book.memo!='undefined'?locals.book.memo:''%>
+					</div>
+				</div>
+				<div style='margin-top:50px;'>
+					<span class='info_text' style='font-size:16px;color:green;'>章节</span>
+					<%
+						var bookSections = locals.book.bookSections ; 
+						for(var i = 0 ; i < bookSections.length ; i ++)
+						{
+							var order = bookSections[i].order ;
+							var section_ = bookSections[i].section[0] ; 
+							var section_name = section_.name ; 
+							var section_secName = section_.secName ; 
+							var section_instruction = section_.instruction ; 
+							var section_content = section_.content ; 
+							%>
+							<div class='memo_div' style='font-size:14px;color:#C65C3F;'>
+								<%=section_name && section_name
+								!='undefined'?unescape(section_name):''%>
+								(<%=section_secName && section_secName
+								!='undefined'?unescape(section_secName):''%>)
+							</div>
+							<div class='memo_div'  style='text-indent:2em;'>
+								<%-section_instruction && section_instruction
+								!='undefined'?unescape(section_instruction):''%></div>
+							<div class='memo_div'  style='text-indent:2em;color:#C65C3F;'>样章:</div>
+							<div class='memo_div'  style='text-indent:2em;'>
+								<%-section_content && section_content
+								!='undefined'?unescape(section_content):''%>
+							</div>
+							<%
+						}
+					%>
+				</div>
+				<div style='margin-top:50px;'>
+					<span class='info_text' style='font-size:16px;color:green;border-bottom:1px solid #d3d0d9;width:100%;display:inline-block;padding-bottom:5px;'>最近评论</span>
+					<div class='memo_div' id='appraiseMore' style='display:inline-block;'>
+						
+					</div>
+				</div>
+			</div>
+			<input type="hidden" name='bookid' id="bookid" value='<%=locals.book._id%>'>
+			<input type='hidden' name='insertOrUpdate' id='insertOrUpdate' value='insert'>
+			<input type='hidden' name='oldStar' id='oldStar' value='0'>
+		<%
+		}%>
+	</div>
+	</div>
+</div>
+<script type="text/javascript" src='/javascripts/fancybox/jquery.fancybox-1.3.4.js'></script>
+<script type="text/javascript" src='/javascripts/bookOne.js'></script>
+<link rel="stylesheet" href="/javascripts/fancybox/jquery.fancybox-1.3.4.css" type='text/css'>
+<script type="text/javascript">
+		var imgs = {
+			rating_empty : '/images/star/star-rating-empty.png' , 
+			rating_full : '/images/star/full.png'
+		}
+		function setStarInit(star){
+			var book_ul_star = document.getElementById('book_ul_star') ; 
+			book_ul_star.setAttribute('initStar' , star -  1) ; 
+			for(var j = 0 ; j < star ; j ++)
+			{
+				var img_ = book_ul_star.children[j].children[0] ; 
+				if(img_)
+					img_.src = imgs.rating_full ; 
+			} 
+			if(star == 1)
+				star_text.innerHTML = '很差!' ; 
+			if(star == 2)
+				star_text.innerHTML = '较差!' ; 
+			if(star == 3)
+				star_text.innerHTML = '还可以!' ; 
+			if(star == 4)
+				star_text.innerHTML = '很好!' ; 
+			if(star == 5)
+				star_text.innerHTML = '值得推荐!' ;
+		}
+		function setAppraise(title , content){
+			if(title != null && title != undefined && title != 'undefined' && title != '')
+				document.getElementById('appraiseTitle').value = title ;
+			if(content != null && content != undefined && content != 'undefined' && content != '')
+				document.getElementById('appraise').value = content ;
+		}
+		<%
+			if(user != null){
+		%>
+		function alterReadsStatus(what){
+			if(what == 'delete')
+			{
+				if(window.confirm('您确定要删除关于本书的读书状态么?',''))
+				{
+					var bookid = document.getElementById('bookid').value ;
+					$.ajax({
+						type : 'post' , 
+						data : {
+							bookid : bookid 
+						} , 
+						url : "/user/deleteUserReads" , 
+						datatype : "json" , 
+						timeout : 6000 , 
+						success : function(result , state , req){
+							window.location.reload() ; 
+						} , 
+						falture : function(result , state , req){
+							console.log('操作失败!') ; 
+						}
+					}) ; 
+				} 
+			}
+			else if(what == 'alter')
+			{
+				document.getElementById('book_interest_div').style.display = 'block';
+			}
+		}
+		$.ajax({
+			type : 'get' , 
+			data : {
+			} , 
+			url : "/user/getUserBooks" , 
+			datatype : "json" , 
+			timeout : 6000 , 
+			success : function(result , state , req){
+				if(result.success == false)
+					console.log('请求失败') ;
+				else
+				{
+					var user = result ; 
+					var bookid = document.getElementById('bookid').value ;
+					if(!bookid)
+						return ;
+					var isReads = false ;
+					if(user == null)
+						isReads = false ;
+					else
+					{
+						var bookStar = user.bookStar ; 
+						var star_text = document.getElementById('star_text') ;
+						for(var i = 0 ; i < bookStar.length ; i ++)
+						{
+							if(bookid == bookStar[i].bookid)
+							{
+								document.getElementById('insertOrUpdate').value = 'update';
+								var star = bookStar[i].star ; 
+								setStarInit(star) ; 
+								setAppraise(bookStar[i].title , bookStar[i].content) ; 
+								break ; 
+							}
+						}
+						var str = '<div class="alter_reads_div"><a class="alter_reads_a" href="javascript:alterReadsStatus(\'alter\');">修改</a><a class="alter_reads_a" href="javascript:alterReadsStatus(\'delete\');">删除</a></div>' ;
+						var nowReads = user.nowReads ; 
+						for(var i = 0 ; i < nowReads.length ; i ++)
+						{
+							if(bookid == nowReads[i]._id)
+							{
+								isReads = true ;
+								$('#reads_status').append($('<span class="reads_me_span">我最近在读这本书</span>'+str)) ; 
+								break ;
+							}
+						}
+						var wantReads = user.wantReads ; 
+						for(var i = 0 ; i < wantReads.length ; i ++)
+						{
+							if(bookid == wantReads[i]._id)
+							{
+								isReads = true ;
+								$('#reads_status').append($('<span class="reads_me_span">我想读这本书</span>' + str)) ;
+								break ;
+							}
+						}
+						var alreadyReads = user.alreadyReads ; 
+						for(var i = 0 ; i < alreadyReads.length ; i ++)
+						{
+							if(bookid == alreadyReads[i]._id)
+							{
+								isReads = true ;
+								$('#reads_status').append($('<span class="reads_me_span">我读过这本书</span>' + str)) ;
+								break ;
+							}
+						}
+					}
+					if(isReads == true)
+					{
+						document.getElementById('book_interest_div').style.display = "none" ;
+						document.getElementById('reads_status').style.display  = "block" ;
+					}
+					else 
+						document.getElementById('reads_status').style.display  = "none" ;
+				} 
+
+			} , 
+			falture : function(result , state , req){
+				console.log('操作失败!') ; 
+			}
+		}) ; 
+		<%}%>
+</script>
+</html>

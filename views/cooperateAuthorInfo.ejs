@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<style type="text/css">
+	.info{
+		width:100%;
+		height:50px;
+		line-height: 50px;
+		vertical-align: middle;
+		text-align: left;
+		display: block;
+
+		-moz-user-select: none;
+   		-webkit-user-select: none;
+
+   		position: absolute;
+   		background-color: #D1EEEE;
+	}
+	.info{
+		border:1px dashed #e4e4e4;
+	}
+	.info-label{
+		width:100px;
+		text-align: right;
+		display: block;
+		float:left;
+		margin-right: 10px;
+		color:#EE7621;
+	}
+	.info-txt,.info-textarea,.info-txt-m{
+		text-align: left;
+	}
+	.info-textarea{
+		width:500px;
+	}
+	.info-txt-m{
+		margin-left: 20px;
+		color: #FF1493;
+	}
+</style>
+<div class='info'>
+	<span class='info-txt-m'>
+		<%
+			if(tempAuthor.publicStatus === 1){
+				%>
+				开放编辑
+				<%
+			}
+			else
+			{
+				%>
+				未开放编辑
+				<%
+			}
+		%>
+	</span>
+	<span class='info-txt-m'>
+		<%
+			if(tempAuthor.submitStatus === 1){
+				%>
+				已提交审核
+				<%
+			}
+			else if(tempAuthor.submitStatus === 2)
+			{
+				%>
+				已收录到作者库
+				<%
+			}
+			else{
+				%>
+				未提交审核
+				<%
+			}
+		%>
+	</span>
+</div>
+<div class='info'>
+	<span class='info-label'>中文名称:</span>
+	<span class='info-txt'><%=tempAuthor.chinesename%></span>
+</div>
+<%
+	if(tempAuthor.englishname)
+		{
+			%>
+			<div class='info'>
+				<span class='info-label'>英文名称:</span>
+				<span class='info-txt'><%=tempAuthor.englishname%></span>
+			</div>
+			<%
+		}
+%>
+<%
+	if(tempAuthor.pencilnames.length !== 0){
+		%>
+		<div class='info'>
+			<span class='info-label'>笔名或曾用名:</span>
+			<%
+				for(var i = 0 ; i < tempAuthor.pencilnames.length ; i ++){
+					if(i !== tempAuthor.pencilnames.length - 1)
+					{
+						%>
+						<span class='info-txt'><%=tempAuthor.pencilnames[i]%>、</span>
+						<%
+					}
+					else
+					{
+						%>
+						<span class='info-txt'><%=tempAuthor.pencilnames[i]%></span>
+						<%
+					}
+				}
+			%>
+		</div>
+		<%
+	}
+%>
+<%
+	if(tempAuthor.race)
+		{
+			%>
+			<div class='info'>
+				<span class='info-label'>民族:</span>
+				<span class='info-txt'><%=tempAuthor.race%></span>
+			</div>
+			<%
+		}
+%>
+<%
+	if(tempAuthor.sex){
+		%>
+		<div class='info'>
+			<span class='info-label'>性别:</span>
+			<%
+				if(tempAuthor.sex === 1)
+				{
+					%>
+					<span class='info-txt'>男</span>
+					<%
+				}
+			else{
+				%>
+				<span class='info-txt'>女</span>
+				<%
+			}
+			%>
+		</div>
+		<%
+	}
+%>
+<%
+	if(tempAuthor.address.country)
+		{
+			%>
+			<div class='info'>
+				<span class='info-label'>所在地区:</span>
+				<span class='info-txt'><%=tempAuthor.address.country%></span>
+				<%
+					if(tempAuthor.address.province)
+					{
+						%>
+						<span class='info-txt'>&<%=tempAuthor.address.province%></span>
+						<%
+							if(tempAuthor.address.city)
+								{
+									%>
+									<span class='info-txt'>&<%=tempAuthor.address.city%></span>
+									<%
+								}
+						%>
+						<%
+					}
+				%>
+			</div>
+			<%
+		}
+%>
+<%
+	if(tempAuthor.address_birth)
+		{
+			%>
+			<div class='info'>
+				<span class='info-label'>出生地:</span>
+				<span class='info-txt'><%=tempAuthor.address_birth%></span>
+			</div>
+			<%
+		}
+%>
+<%
+	if(tempAuthor.birthday)
+		{
+			var d = new Date(tempAuthor.birthday) ;
+			var month = '' ; 
+			if(d.getMonth() + 1 < 10)
+				month = '0' + (d.getMonth() + 1) ; 
+			else
+				month = d.getMonth() + 1 ; 
+			var day = '' ; 
+			if(d.getUTCDate() < 10)
+				day = '0' + d.getUTCDate() ; 
+			else
+				day = d.getUTCDate() ;
+			var birthday = d.getFullYear() + '-' + month + '-' +  day ; 
+			%>
+			<div class='info'>
+				<span class='info-label'>出生日期:</span>
+				<span class='info-txt'><%=birthday%></span>
+			</div>
+			<%
+		}
+%>
+<%
+	if(tempAuthor.job){
+		%>
+		<div class='info'>
+			<span class='info-label'>职业:</span>
+			<span class='info-txt'><%=tempAuthor.job%></span>
+		</div>
+		<%
+	}
+%>
+<%
+	if(tempAuthor.graduateSchool)
+		{
+			%>
+			<div class='info'>
+				<span class='info-label'>毕业院校:</span>
+				<span class='info-txt'><%=tempAuthor.graduateSchool%></span>
+			</div>
+			<%
+		}
+%>
+<%
+	if(tempAuthor.worth){
+		%>
+		<div class='info'>
+				<span class='info-label'>成就奖项:</span>
+				<span class='info-txt'><%=tempAuthor.worth%></span>
+			</div>
+		<%
+	}
+%>
+<%
+	if(tempAuthor.introduction){
+		%>
+		<div class='info'>
+				<span class='info-label'>履历:</span>
+				<span class='info-textarea'><%=tempAuthor.introduction%></span>
+			</div>
+		<%
+	}
+%>
+<link rel="stylesheet" type="text/css" href="/stylesheets/smallPanelGrag.css">
+<script type="text/javascript" src='/javascripts/smallPanelGrag.js'></script>

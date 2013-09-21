@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<%-include header%>
+<%-include indexSearch%>
+<%-include userReadStatus%>
+<style type="text/css">
+    .pricing-box{
+    	width:178px;
+    	text-align:center;
+    	position:relative;
+    	border-radius:5px;
+    }
+    .pricing-box{
+    	margin:0 12px 0 0;
+    	float:left;
+    }
+    .pricing-box:last-child{
+    	margin-right:0px;
+    	float:right;
+    }
+	.pricing-box-top{
+		color:#FFFFFF;
+		border-width:1px 1px 0;
+		border-style:solid;
+		border-color:rgba(0,0,0,0.05);
+		border-radius:5px 5px 0 0;
+	}
+	.pricing-box-top-free{
+		background:#2EB1B6;
+	}
+	.pricing-box-name{
+		font:300 28px/1 "Roboto","Open Sans",Arial;
+		padding:20px 0;
+		float:left;
+		width:100%;
+		box-shadow:0 -1px 0 rgba(0,0,0,0.1) inset;
+		border-bottom:1px solid rgba(255,255,255,0.2);
+		margin-bottom:20px;
+	}
+	.pricing-box-info-number{
+		position:relative;
+		float:left;
+		width:100%;
+		text-shadow:0 -1px 0 rgba(0,0,0,0.4);
+		font:90px/80px "Helvetica Neue",Helvetica,Arial;
+	}
+	.pricing-box-info-number span{
+		font-size:16px;
+		line-height:1;
+		font-weight:bold;
+	}
+	.pricing-box-yearly-price{
+		padding:20px 0;
+		font-size:15px;
+		float:left;
+		width:100%;
+		text-shadow:0 -1px 0 rgba(0,0,0,0.2);
+		line-height:1.75;
+	}
+	.clear{
+		clear:both;
+	}
+	.pricing-box-info{
+		padding:0 15px 20px;
+		color:#4B5966;
+		font-family:Arial;
+		border-width:0 1px 1px;
+		border-style:solid;
+		border-color:rgba(0,0,0,0.05);
+		border-radius:0 0 5px 5px;
+		background:#FAFAFA;
+	}
+	.pricing-box-plan-features{
+		box-shadow:0 1px 0 #fff inset;
+	}
+	.pricing-box-plan-features p{
+		font-family:Arial;
+		text-align:left;
+		padding:0 15px;
+		margin:0 -15px;
+		line-height:44px;
+		font-size:14px;
+		border-bottom:1px solid #fff;
+		box-shadow:0 -1px 0 #ebebeb inset;
+		background:#FAFAFA;
+	}
+	.pricing-box-description{
+		padding-top:20px;
+		font-size:12px;
+	}
+	.span12_edit{
+		margin-top:10px;
+		text-align: center;
+	}
+</style>
+<div class="container">
+	<div class='row'>
+		<div class='span12 span12_edit'>
+			<%include copperateDashBoardTab%>
+			<div class="pricing-box">
+				<div class="pricing-box-top pricing-box-top-free">
+					<div class="pricing-box-name">公开</div>
+					<div class="pricing-box-info-number" id='publicNumber'>0</div>
+					<div class="pricing-box-yearly-price">允许他人修改!</div>
+					<div class="clear"></div>
+				</div>
+				<div class="pricing-box-info">
+					<div class="pricing-box-plan-features" id='publicBox'>
+					</div>
+					<div class="pricing-box-description">您将作者信息共开进行编辑，其他用户也可以对其进行编辑，无需您的允许，您可以分别对每个条目进行重新设置</div>
+				</div>
+			</div>
+			<div class="pricing-box">
+				<div class="pricing-box-top pricing-box-top-free">
+					<div class="pricing-box-name">未公开</div>
+					<div class="pricing-box-info-number" id='unPublicNumber'>0</div>
+					<div class="pricing-box-yearly-price">不允许他人修改</div>
+					<div class="clear"></div>
+				</div>
+				<div class="pricing-box-info">
+					<div class="pricing-box-plan-features" id='unPublicBox'>
+					</div>
+					<div class="pricing-box-description">您未将作者信息共开进行编辑，其他用户不可以对其进行编辑，您可以分别对每个条目进行重新设置!</div>
+				</div>
+			</div>
+			<div class="pricing-box">
+				<div class="pricing-box-top pricing-box-top-free">
+					<div class="pricing-box-name">未提交</div>
+					<div class="pricing-box-info-number" id='unSubmitNumber'>0</div>
+					<div class="pricing-box-yearly-price">不打算提交的作者信息</div>
+					<div class="clear"></div>
+				</div>
+				<div class="pricing-box-info">
+					<div class="pricing-box-plan-features" id='unSubmitBox'>
+					</div>
+					<div class="pricing-box-description">你编写的作者信息暂时没有提交管理员审核，或者您不打算提交审核!</div>
+				</div>
+			</div>
+			<div class="pricing-box">
+				<div class="pricing-box-top pricing-box-top-free">
+					<div class="pricing-box-name">审核中</div>
+					<div class="pricing-box-info-number" id='submitedNumber'>0</div>
+					<div class="pricing-box-yearly-price">提交的作者信息审核中</div>
+					<div class="clear"></div>
+				</div>
+				<div class="pricing-box-info">
+					<div class="pricing-box-plan-features" id='submitedBox'>
+					</div>
+					<div class="pricing-box-description">您添加的作者信息正在被管理员审核，审核通过后，你添加的作者信息将会被收录到作者信息库当中，你作为贡献者将会出现在贡献者列表中，若您添加的作者信息是公开的，且有其他用户对此进行编辑，那么其他用户也会作为贡献者出现在贡献者列表中！</div>
+				</div>
+			</div>
+			<div class="pricing-box">
+				<div class="pricing-box-top pricing-box-top-free">
+					<div class="pricing-box-name">已收录</div>
+					<div class="pricing-box-info-number" if='usedNumber'>0</div>
+					<div class="pricing-box-yearly-price">作者信息库已收录</div>
+					<div class="clear"></div>
+				</div>
+				<div class="pricing-box-info">
+					<div class="pricing-box-plan-features" id='usedBox'>
+					</div>
+					<div class="pricing-box-description">您编写的作者信息提交给管理审核，作者信息正确无误且没有重复出现在作者信息库中，管理员已经同意并已经将您编写的作者信息收录到作者信息库当中。</div>
+				</div>
+			</div>
+		</div>	
+	</div>
+</div>
+<script type="text/javascript">
+	$.ajax({
+		type: 'get',
+		url: "/cooperation/getUserEditTempAuthorsComplete",
+		datatype: "json",
+		timeout: 6000,
+		success: function(result, state, req) {
+			if(result.success == true)
+			{
+				var tempAuthors = result.tempAuthors ;
+				$('#subfont1').text(tempAuthors.length) ;
+				var usedNumber = 0 ; 
+				var submitedNumber = 0 ;
+				var unSubmitNumber = 0 ;
+				var publicNumber = 0 ;
+				var unPublicNumber = 0 ;
+				for(var i = 0 ; i < tempAuthors.length ; i ++){
+
+					var p = $('<p><a title="简式预览" href="/cooperation/cooperateAuthorViewPublic/introduction/'+tempAuthors[i]._id+'"><i class="icon-eye-open icon-blue-dark"></i></a><a title="列表式预览" href="/cooperation/cooperateAuthorPreview/'+tempAuthors[i]._id+'"><i class="icon-list icon-blue-dark"></i></a><a href="/cooperation/cooperateAuthorEdit/'+tempAuthors[i]._id+'" title="编辑"><i class="icon-edit icon-blue-dark"></i></a>'+tempAuthors[i].chinesename+'</p>');
+					if(tempAuthors[i].submitStatus == 1)
+					{
+						submitedNumber ++ ; 
+						var psubmited = p.clone() ; 
+						$('#submitedBox').append(psubmited);
+						psubmited.children('a:last').remove();
+					}
+					else if(tempAuthors[i].submitStatus == 2)
+					{
+						$('#usedBox').append(p);
+						usedNumber ++ ;
+					}
+					else if(tempAuthors[i].submitStatus == 0)
+					{
+						unSubmitNumber ++ ;
+						$('#unSubmitBox').append(p);
+					}
+					if(tempAuthors[i].publcStatus == 0)
+					{
+						unPublicNumber ++ ; 
+						$('#unPublicBox').append(p);
+					}
+					else if(tempAuthors[i].publcStatus == 1)
+					{
+						publicNumber ++ ; 
+						$('#publicBox').append(p);
+					}
+				}
+				$('#publicNumber').text(publicNumber) ;
+				$('#unPublicNumber').text(unPublicNumber) ;
+				$('#usedNumber').text(usedNumber) ;
+				$('#submitedNumber').text(submitedNumber) ;
+				$('#unSubmitNumber').text(unSubmitNumber) ;
+			}
+		},
+		falture: function(result, state, req) {
+			console.log('操作失败!');
+		}
+	});
+</script>

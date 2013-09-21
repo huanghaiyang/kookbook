@@ -1,0 +1,171 @@
+<!DOCTYPE HTML>
+<%-include header%>
+<%-include indexSearch%>
+<%-include userReadStatus%>
+<html>
+	<head>
+		<title>
+			创建标签
+		</title>
+	</head>
+	<style type="text/css">
+		.cooperate-books-container{
+			margin-top: 20px;
+			width:100%;
+			position: relative;
+			text-align: center;
+			background-color: #FFFFFF;
+			border:1px solid #E5E5E5;
+			vertical-align: middle;
+		}
+		#addTagBtn{
+			margin-top: 200px;
+			margin-bottom: 200px;
+		}
+		.cooperate-books-inputs-main{
+			height: 100%;
+			width: 100%;
+			vertical-align: top;
+			display: none;
+			margin-top: 0px;
+		}
+		.ease-form-div{
+			width:100%;
+			margin-top: 10px;
+		}
+	</style>
+	<link rel="stylesheet" type="text/css" href="/stylesheets/easeForm.css">
+	<script type="text/javascript" src='/javascripts/easeForm.js'></script>
+	<body>
+		<div class='container'>
+			<div class='row'>
+				<div class='span12'>
+					<div class='cooperate-books-container' id='booksContainer'>
+						<button class="btn btn-large btn-success" type="button" id='addTagBtn'>添加一本图书</button>
+						<div class='cooperate-books-inputs-main' id='booksMain'>
+							<div class='ease-form-div'>
+								<form id='easeForm' class='ease-form' action='/copperation/bookAdd' method='post'>
+									<div class='ease-form-control'>
+										<label class='ease-form-control-label' for="username">
+											书籍名称:
+										</label>
+										<input class='ease-form-control-input ease-not-null' placeholder="请填写用户名" id="username" name="username">
+										<div class='ease-form-control-input-alert'>
+										</div>
+									</div>
+									<div class='ease-form-control-info'>
+										<div class='ease-form-control-info-t'>
+											您可以填写书籍名称为中文或者是英文，请不要输入特殊字符，以便您能够顺利的提交书籍信息。
+											<img src="/images/up_collapse.png" class='ease-form-control-info-img'  title='隐藏'>
+										</div>
+									</div>
+
+
+									<div class='ease-form-control'>
+										<label class='ease-form-control-label' for="ISBN">
+											ISBN:
+										</label>
+										<input class='ease-form-control-input ease-not-null' placeholder="请填写ISBN" id="ISBN" name="ISBN">
+										<div class='ease-form-control-input-alert'>
+										</div>
+									</div>
+									<div class='ease-form-control-info'>
+										<div class='ease-form-control-info-t'>
+											国际标准书号（International Standard Book Number）简称ISBN，是国际通用的图书或独立的出版物（除定期出版的期刊）代码
+											<img src="/images/up_collapse.png" class='ease-form-control-info-img' title='隐藏'>
+										</div>
+									</div>
+
+									<div class='ease-form-control'>
+										<label class='ease-form-control-label' for="authorname">
+											作者名称:
+										</label>
+										<div class='ease-form-control-input-actions'>
+											<input class='ease-form-control-input ease-not-null' placeholder="请填写作者名称" id="authorname" name="authorname">
+											<div id='ease-search-authorname' class='ease-input-button'>
+												<img src="/images/search-red.png" class='ease-search-img' title='点击检索作者名称'>
+											</div>
+										</div>
+										<div class='ease-form-control-input-alert'>
+										</div>
+									</div>
+									<div class='ease-form-control-info'>
+										<div class='ease-form-control-info-t'>
+											您可以填写多个作者名称并用逗号进行分隔，或者通过系统检索作者信息，选中添加
+											<img src="/images/up_collapse.png" class='ease-form-control-info-img' title='隐藏'>
+										</div>
+									</div>
+
+									<div class='ease-form-control'>
+										<label class='ease-form-control-label' for="publiccompanyname">
+											出版社:
+										</label>
+										<input class='ease-form-control-input ease-not-null' placeholder="请填写出版社名称名称" id="publiccompanyname" name="publiccompanyname">
+										<div class='ease-form-control-input-alert'>
+										</div>
+									</div>
+									<div class='ease-form-control-info'>
+										<div class='ease-form-control-info-t'>
+											您需要填写书籍首版出版社的名称，或者通过系统检索出版社信息，选中添加
+											<img src="/images/up_collapse.png" class='ease-form-control-info-img'  title='隐藏'>
+										</div>
+									</div>
+
+									<div class='ease-form-control'>
+										<label class='ease-form-control-label' for="publicdate">
+											出版日期:
+										</label>
+										<input class='ease-form-control-input ease-not-null' placeholder="请填写书籍出版日期" id="publicdate" name="publicdate">
+										<div class='ease-form-control-input-alert'>
+										</div>
+									</div>
+									<div class='ease-form-control-info'>
+										<div class='ease-form-control-info-t'>
+											请准确填写书籍的出版日期
+											<img src="/images/up_collapse.png" class='ease-form-control-info-img'  title='隐藏'>
+										</div>
+									</div>
+
+									<div class='ease-form-control'>
+										<label class='ease-form-control-label' for="introduction">
+											内容简介:
+										</label>
+										<textarea class='ease-form-control-textarea ease-could-null' placeholder="请填写书籍内容简介" id="introduction" name="introduction" resize='none'></textarea>
+									</div>
+									<div class='ease-form-control-info'>
+										<div class='ease-form-control-info-t'>
+											简要概述一下书籍的内容
+											<img src="/images/up_collapse.png" class='ease-form-control-info-img' title='隐藏'>
+										</div>
+									</div>
+									<div class="form-actions">
+										<button class="btn btn-primray" type="submit">提交</button>
+										<%if(error!=""){%><font color="red"><strong><%=error%></strong></font><%}%>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>	
+	</body>
+	<%-include searchAuthornameForSignIn_modal%>
+	<script type="text/javascript">
+		var searchAuthornameModal ; 
+		$(document).ready(function(){
+			$('#addTagBtn').click(function(){
+				$(this).remove();
+				$('#booksMain').show();
+			});
+			$('.ease-form-control').easeForm();
+			searchAuthornameModal = $().searchAuthornameModal();
+			$('#ease-search-authorname').click(function(ev){
+				ev.preventDefault();
+				ev.stopPropagation();
+				searchAuthornameModal.show();
+				$('#authorname_search').focus();
+			});
+		});
+	</script>
+</html>

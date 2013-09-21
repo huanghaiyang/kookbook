@@ -1,0 +1,40 @@
+<!doctype html>
+<style type="text/css">
+	.bottom-bar{
+		height:30px;
+		line-height: 30px;
+		width: 100%;
+		background-color: #B8860B;
+		position: fixed;
+		bottom: 0px;
+	}
+	.bottom-bar-btn-l , .bottom-bar-btn-r{
+		display: inline-block;
+		color: #FFFFFF;
+	}
+	.bottom-bar-btn-l{
+		margin-left: 10px;
+		float: left;
+	}
+	.bottom-bar-btn-r{
+		margin-right: 10px;
+		float: right;
+	}
+	.bottom-bar-btn-l:hover , .bottom-bar-btn-r:hover{
+		opacity: .9;
+		cursor: pointer;
+	}
+	#bbarBtn{
+		display:none;
+	}
+</style>
+<div class='bottom-bar' id='bbar'>
+	<span class='bottom-bar-btn-l'>
+		<a href="">
+			[退出]
+		</a>
+	</span>
+	<span class='bottom-bar-btn-r' title='底部收缩' id='bbarBtn'>︾</span>
+	<span class='bottom-bar-btn-r' title='作者邮箱'>email:huanhai24@sina.com</span>
+	<span class='bottom-bar-btn-r' title='版权所有'>@copyright:huanghaiyang</span>
+</div>

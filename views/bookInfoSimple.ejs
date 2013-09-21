@@ -1,0 +1,82 @@
+<div class='book_info'>
+	<div class='book_img_div'>
+		<img class='book_img' src='<%=locals.book.images[0].url + unescape(locals.book.images[0].filename)%>'>
+	</div>
+	<div class='book_others'>
+		<div>
+			作者:
+			<%
+			var authors = locals.book.authors ; 
+			for(var i = 0 ; i < authors.length ; i ++)
+			{
+				%>
+					<span><a href=''><%=authors[i].name%></a></span>
+				<%
+			}
+			%>
+		</div>
+		<div>
+			出版社:
+			<%
+				var publicCompanys = locals.book.publicCompany ;
+				for(var i = 0 ; i < publicCompanys.length ; i ++)
+				{
+					%>
+						<span><a href=''><%=publicCompanys[i].name%></a></span>
+					<%
+				}
+			%>
+		</div>
+		<div>
+			出版时间:
+			<%
+			var publicDate = new Date(locals.book.publicDate) ; 
+			var p_date = publicDate.getFullYear() + "-" + (publicDate.getMonth() + 1) + "-" + publicDate.getDate() ; 
+			%>
+			<span class="info_text">
+				<%=p_date%>
+			</span>
+		</div>
+		<div>
+			页数:
+			<span class="info_text">
+				<%=locals.book.pageNumber ? locals.book.pageNumber :""%>
+			</span>
+		</div>
+		<div>
+			定价:
+			<span class="info_text">
+				<%=locals.book.price?locals.book.price:''%>￥
+			</span>
+		</div>
+		<div>
+			装帧:
+			<span class="info_text">
+				<%
+				var isBanding = locals.book.banding ; 
+				if(isBanding == 0){
+				%>
+				平装
+				<%
+				}
+				else if(isBanding == 1){
+				%>
+				精装
+				<%
+				}
+				else if(isBanding == 2){
+				%>
+				套装
+				<%
+				}
+				%>
+			</span>
+		</div>
+		<div>
+			ISBN:
+			<span class="info_text">
+				<%=locals.book.ISBN%>
+			</span>
+		</div>
+	</div>
+	</div>

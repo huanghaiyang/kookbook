@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<%-include header%>
+<style type="text/css">
+  .btn-m{
+    margin-right: 10px;
+  }
+  .search-input-div{
+    width:600px;
+    margin-top: 60px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  .login-404{
+    width:600px;
+    margin-left: auto;
+    margin-right: auto;
+    border-bottom: 2px solid #CD6889;
+    margin-top:10px;
+  }
+  .title-404{
+    color: #000000;
+    width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    border-bottom: 2px solid #CD6889;
+  }
+  .a-m{
+    margin-right:10px;
+  }
+</style>
+  <div class='search-input-div'>
+    <%-include searchInputFlexible%>
+  </div>
+  <%-include 404Font%>
+  <div class='title-404'>
+    您访问的页面不存在哦！
+  </div>
+  <div class="login-404">
+    <a href='/' class='a-m'>返回首页</a>
+    <a href='/aboutUs' class='a-m'>关于我们</a>
+    <a href='/contactMe' class='a-m'>联系我们</a>
+  </div>
+  <%
+    if(!user){
+      %>
+      <div class="login-404">
+        <a href='/login' class='a-m'>登录</a>
+        <a href='/reg' class='a-m'>注册</a>
+      </div>
+      <%
+    }
+  %>  
+

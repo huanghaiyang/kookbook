@@ -1,0 +1,141 @@
+<!DOCTYPE>
+<style type="text/css">
+	.edit-options{
+		height:60px;
+		width:80%;
+		margin-left: 10%;
+	}
+	.edit-option{
+		margin-top:0px;
+		margin-left:0px;
+		width:60px;
+		height:100%;
+		background-color: #68cbd0;
+		float:left;
+		margin-right: 5px;
+		text-align: center;
+		vertical-align: middle;
+		line-height: 60px;
+		color: #FFFFFF;
+		position: relative;
+	}
+	.edit-option-text{
+	}
+	.edit-option-check{
+		position: absolute;
+		top:14px;
+		left:14px;
+		display: none;
+	}
+	.edit-bar-hi,.edit-bar-hi-bottom{
+		height:1px;
+		background-color: #fd6864;
+	}
+	.edit-bar-hi-bottom{
+		margin-bottom: 20px;
+		margin-top: 5px;
+	}
+	.edit-bar-hi{
+		margin-bottom: 5px;
+	}
+</style>
+<div class='edit-bar-hi'>
+</div>
+<div class='edit-options'>
+	<div class='edit-option' data-check-status='<%=submitStatus?submitStatus:0%>'>
+		<%
+			if(submitStatus){
+				if(submitStatus == 0){
+					%>
+						<span class='edit-option-text'>未提交审核</span>
+						<span class='edit-option-text' style='display:none;'>提交审核</span>
+						<img src='/images/check_26.png' class='edit-option-check'>
+					<%
+				}
+				else if(submitStatus == 1)
+				{
+					%>
+						<span class='edit-option-text' style='display:none;'>未提交审核</span>
+						<span class='edit-option-text' style='display:block;'>提交审核</span>
+						<img src='/images/check_26.png' class='edit-option-check' style='display:block;'>
+					<%
+				}
+			}
+			else{
+				%>
+					<span class='edit-option-text'>未提交审核</span>
+					<span class='edit-option-text' style='display:none;'>提交审核</span>
+					<img src='/images/check_26.png' class='edit-option-check'>
+				<%
+			}
+		%>
+	</div>
+	<div class='edit-option' data-check-status='<%=publicStatus?publicStatus:0%>'>
+		<%
+		if(publicStatus){
+			if(publicStatus ==0){
+				%>
+					<span class='edit-option-text'>未开放编辑</span>
+					<span class='edit-option-text' style='display:none;'>开放编辑</span>
+					<img src='/images/check_26.png' class='edit-option-check'>
+				<%
+			
+			}
+			else if(publicStatus == 1)
+			{
+				%>
+					<span class='edit-option-text' style='display:none;'>未开放编辑</span>
+					<span class='edit-option-text' style='display:block;'>开放编辑</span>
+					<img src='/images/check_26.png' class='edit-option-check' style='display:block;'>
+				<%
+			}
+		}
+		else
+		{
+			%>
+				<span class='edit-option-text'>未开放编辑</span>
+				<span class='edit-option-text' style='display:none;'>开放编辑</span>
+				<img src='/images/check_26.png' class='edit-option-check'>
+			<%
+		}
+	%>
+	</div>
+</div>
+<div class='edit-bar-hi-bottom'>
+</div>
+<input type='hidden' name='submitStatus' id='submitStatus' value='0'>
+<input type='hidden' name='pulicStatus' id='pulicStatus' value='0'>
+<script type="text/javascript">
+	$('.edit-option').each(function(index, op) {
+    var $o = $(this);
+    $o.bind('click', function(event) {
+      if ($o.attr('data-check-status') == 0) {
+        $o.children('.edit-option-check').css({
+          'display': 'block'
+        });
+        $o.attr('data-check-status', '1');
+        $($o.children('.edit-option-text')[0]).css({
+          'display': 'none'
+        });
+        $($o.children('.edit-option-text')[1]).css({
+          'display': 'block'
+        });
+        $('#pulicStatus').val(1);
+        $('#submitStatus').val(1);
+      } else {
+        $o.children('.edit-option-check').css({
+          'display': 'none'
+        });
+        $o.attr('data-check-status', '0');
+        $($o.children('.edit-option-text')[0]).css({
+          'display': 'block'
+        });
+        $($o.children('.edit-option-text')[1]).css({
+          'display': 'none'
+        });
+        $('#pulicStatus').val(0);
+        $('#submitStatus').val(0);
+      }
+    });
+  });
+</script>

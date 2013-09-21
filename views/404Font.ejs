@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<style type="text/css">
+  .main{
+      width:600px;
+      height:200px;
+      margin-top:50px;
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: 15px;
+  }
+
+  .item{
+      width:32px;
+      height:20px;
+      line-height:20px;
+      float:left;
+      margin:2px 2px;
+      color:#ffffff;
+      text-align: center;
+  }
+</style>
+<div class="main">
+</div>
+<script type="text/javascript">
+	$(document).ready(function(){
+    function GetColor(){
+      var array=['#CD8500','#CD950C','#CD853F','#CD8162','#CD661D','#CD5B45','#CD5C5C','#CD6889','#D2691E'];
+      return array[Math.floor(Math.random()*array.length)];
+    };
+    function numberIsIn(number){
+      var arry = [3,18,33,48,64,65,66,67,68,83,19,35,51,67,99,14,29,44,59,75,76,77,78,79,30,46,62,78,94,110,7,8,22,38,54,70,86,103,104,89,73,57,41,25] ; 
+      for(var i in arry)
+      {
+        if(arry[i] === number)
+          return true ; 
+      }
+      return false ;
+    };
+    for(var k = 0 ; k < 111 ; k ++){
+      $('.main').append($('<div class="item" data-colored="false">&nbsp;&nbsp;</div>')) ; 
+    }
+    var $items = $('.item');
+    var $length = $items.length ; 
+    var $all = [] ; 
+    $items.each(function(i,item){
+      if(numberIsIn(i) === true)
+        $all.push($(item));
+    });
+    function setColor(){
+      var $num = Math.floor(Math.random()*$all.length) ; 
+      var $item = $($all[$num]) ; 
+      if($item.attr('data-colored') === 'false')
+      {
+        $item.css({
+          'backgroundColor' : GetColor()
+        }) ; 
+        $item.attr('data-colored',true) ;
+        $item.html('404');
+        $all.splice($num , 1);
+      }
+    };
+		setInterval(function(){
+      setColor();
+    },20);
+	}) ; 
+</script>

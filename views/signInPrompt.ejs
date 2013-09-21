@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<style type="text/css">
+	.sign-prompt{
+		width:100%;
+		height:30px;
+	}
+    .sign-prompt {
+        
+        -moz-box-shadow:inset 0px 0px 0px -5px #ffe0b5;
+        -webkit-box-shadow:inset 0px 0px 0px -5px #ffe0b5;
+        box-shadow:inset 0px 0px 0px -5px #ffe0b5;
+        
+        background-color:#fbb450;
+        
+        -moz-border-radius:1px;
+        -webkit-border-radius:1px;
+        border-radius:1px;
+        
+        border:1px solid #c97e1c;
+        
+        display:inline-block;
+        color:#ffffff;
+        font-family:Impact;
+        font-size:11px;
+        font-weight:normal;
+        text-decoration:none;
+        
+    }
+    .sign-prompt:hover {
+        background-color:#f89306;
+        -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=80)"; /* ie8  */
+	    filter:alpha(opacity=80);    /* ie5-7  */
+	    -moz-opacity:0.8;    /* old mozilla browser like netscape  */
+	    -khtml-opacity: 0.8;    /* for really really old safari */ 
+	    opacity: 0.8; 
+    }
+    .sign-prompt-text{
+    	margin-left:100px;
+    	height:30px;
+    	line-height: 30px;
+        display: inline-block;
+        float: left;
+    }
+    .sign-prompt a{
+    	color:blue;
+    }
+    .sign-prompt-collapse{
+        margin-right: 50px;
+        display: inline-block;
+        height:30px;
+        line-height: 30px;
+        float: right;
+    }
+    .sign-prompt-collapse:hover{
+        text-decoration: underline;
+        cursor: default;
+    }
+    .bl-arrow{
+        width:20px;
+        background-color:red;
+        margin-right:0px;
+        float:right;
+        margin:0px;
+        height:15px;
+        border-top:1px solid #E5E5E5;
+        border-left:1px solid #E5E5E5;
+        border-right:1px solid #E5E5E5;
+    }
+    .p-a-m{
+        margin-left: 4px;
+        margin-right: 4px;
+    }
+</style>
+<%
+    if(!user)
+        {
+            %>
+            <div class='span12' style='margin-bottom:5px;'>
+                <div class='sign-prompt'>
+                    <div class='sign-prompt-text'>提示：您可以<a href='/login' class='p-a-m'>登录</a>或者<a href='/reg' class='p-a-m'>注册</a>来浏览更多东西······</div>
+                    <div class='sign-prompt-collapse'>
+                        [<font color='red'>收起</font>]
+                    </div>
+                </div>
+            </div>
+            <%
+        }
+%>
+
+<script type="text/javascript">
+    $('.sign-prompt-collapse').bind('click',function(ev){
+        var $t = $(this) ; 
+        var $p = $t.parent().parent() ; 
+        $p.slideUp(200,function(){
+            $p.hide();
+            var $bl = $("<div class='span12' style='height:0px;overflow:hidden;'><div class='bl-arrow' title='登录'></div></div>") ;
+            $bl.insertBefore($p);
+            $bl.animate({
+                'height':'4px'
+            });
+            $('.bl-arrow').bind('mouseover',function(){
+                $('.bl-arrow').stop().animate({'width':'100%'});
+            });
+            $('.bl-arrow').bind('mouseout',function(){
+                $('.bl-arrow').stop().animate({'width':'20px'});
+            });
+            $('.bl-arrow').bind('click',function(){
+                if($maskFunc){
+                    $maskFunc.show();
+                }
+            });
+        }) ; 
+    });    
+</script>

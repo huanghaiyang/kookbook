@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<%-include header%>
+<%-include indexSearch%>
+<%-include userReadStatus%>
+<div class="container" style='margin-top:15px;min-height:400px;'>
+	<div class="row">
+		<div class='span9'>
+			<%
+				if(result && count > 0)
+				{
+					%>
+					<div style='width:100%;height:30px;line-height:30px;vertical-align:middle;text-align:right;font-size:12px;'>
+					搜索结果:当前第 <%=(page - 1) * searchPageSize + 1%> - <%=page * searchPageSize%>条/共 <%=count%>条
+					</div>
+					<div style='width:100%;text-align:right;'>
+						<%- partial('searchBooksOneResult',{collection:result,as:'book'}) %>
+					</div>
+					<%
+				}
+				else
+				{
+					%>
+					<div style='width:100%;height:30px;line-height:30px;vertical-align:middle;text-align:left;font-size:14px;'>
+						没有任何搜索结果
+					</div>
+					<%
+				}
+			%>
+			<%- partial('bookPage' , {count : count , searchPageSize : searchPageSize ,page:page, searchName :searchName})%>
+		</div>	
+	</div>
+</div>
+<%-include bottomBar%>

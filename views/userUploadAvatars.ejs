@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<style type="text/css">
+	#uploadBtn{
+		display: none;
+	}
+	#previewDiv{
+		display: none;
+	}
+	.container{
+		-moz-user-select: none;
+	}
+</style>
+<%-include header%>
+<body onselectstart="return false">
+<div class="container">
+	<div class="row">
+		<div class='span12'>
+			<fieldset id="form_field">
+				<legend>头像上传</legend>
+				<div style='width:100%;height:210px;'>
+					<div style='float:left;width:100px;height:100px;position:relative;overflow:hidden;'>
+						<img id='previewUserAvatar' style='position:absolute;'>
+					</div>
+					<div style='height:100px;width:88%;float:right'>
+						<div style='width:100%;height:20px;'>
+							<span style='font-size:16px;color:green;'>
+								从本地选择您所需要上传的图片文件：
+							</span>
+						</div>
+						<div style='width:100%;height:20px;margin-top:10px;'>
+							<span style='font-size:12px;color:gray;'>
+								注意上传的图片类型必须为JPG、JPEG、GIF、PNG或BMP(100x100~1200x1200)。
+							</span>
+						</div>
+						<div style='width:100%;height:50px;margin-top:5px;'>
+							<div style='padding-left:0px;'>
+					            <label for="file" style='text-align:left;color:gray;'>本地文件:</label>
+					            <input type="file" name="fileToUpload" id="fileToUpload"  multiple="multiple" onchange="fileSelected();" />
+					        </div>
+					        
+					        <div id="fileName">
+					        </div>
+					        <div id="fileSize">
+					        </div>
+					        <div id="fileType">
+					        </div> 
+					        <div>
+					            <input type="button" id='uploadBtn' onclick="uploadFile()" value="点击上传" class='btn btn-success'/>
+					        </div>
+					        <div id="progressNumber">
+					        </div>
+						</div>
+					</div>
+				</div>
+				<div style='width:100%;height:20px;' id='msg'></div>
+				<div style='width:100%;height:200px;' id='previewDiv'>
+					<p>[头像预览与裁剪]</p>
+					<div style='float:left;width:400px;'>
+						<img id='previewImg' style='width:400px;'>
+					</div>
+					<div style='width:200px;height:200px;float:left;margin-left:5px;'>
+						<div style='text-align:left;height:20px;'>
+							尺寸:
+							<span id='imgSize'></span>
+				        </div>
+				        <div>
+				            <input type="button" id='cutBtn' value="确定裁剪" class='btn btn-success'/>
+				        </div>
+					</div>
+				</div>
+				<input type='hidden' name='imgid' id='imgid'>
+			</fieldset>
+		</div>
+	</div>
+</div>
+</body>
+<script type="text/javascript" src='/javascripts/userUploadAvatars.js'></script>
+</html>

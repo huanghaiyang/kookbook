@@ -1,0 +1,32 @@
+<!DOCTYPE>
+<SCRIPT TYPE="text/javascript" SRC='/javascripts/AndriodCanlderKookbook/jquery.mousewheel.js'></SCRIPT>
+<SCRIPT TYPE="text/javascript" SRC='/javascripts/AndriodCanlderKookbook/calender.js'></SCRIPT>
+<link rel="stylesheet" type="text/css" href="/javascripts/AndriodCanlderKookbook/calender.css">
+<%
+	if(editable != null && editable != undefined && editable === true){
+		%>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$('body').AndriodCanlderKookbook({
+					inputRender :'<%=inputRender%>' , 
+					currentYear : parseInt('<%=year%>') , 
+					currentMonth : parseInt('<%=month%>') , 
+					currentDay : parseInt('<%=day%>'),
+					inputRenderMarginLeft:20
+				});
+			});
+		</script>
+		<%
+	}else{
+		%>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$('body').AndriodCanlderKookbook({
+					inputRender :'<%=inputRender%>' ,
+					inputRenderMarginLeft:20
+				});
+			});
+		</script>
+		<%
+	}
+%>

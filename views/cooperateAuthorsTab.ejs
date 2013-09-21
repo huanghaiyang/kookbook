@@ -1,0 +1,106 @@
+<!DOCTYPE>
+<style type="text/css">
+	.authorMenu{
+		top:10px;
+		left:0px;
+		position: absolute;
+		z-index: 200;
+		padding:0px;
+		margin-left: 0px;
+	}
+	.authorMenu li{
+		width:140px;
+		height:20px;
+		float:left;
+		color:#191919;
+		text-align:center;
+		overflow:hidden;
+		margin-left: 0px;
+	}
+	.authorMenu a{
+		color:#FFF;
+		text-decoration:none;
+	}
+	.authorMenu a:hover{
+		text-decoration: underline;
+	}
+	.authorMenu.subtext{
+		padding-top:15px;
+	}
+	.green{background:#6AA63B;}
+	.yellow{background:#FBC700;}
+	.red{background:#D52100;}
+	.purple{background:#5122B4;}
+	.blue{background:#0292C0;}
+	.subfont{
+		font-size: 30px;
+		font-weight: bold;
+		color: #000000;
+	}
+</style>
+<ul class='authorMenu'>
+	<li class="green">
+		<p><a href="/cooperation/cooperateAuthorsMainPage">已编辑</a></p>
+		<p class="subtext">您已经编辑完成的作者信息,包括私密和公开</p>
+		<p class='subfont' id='subfont1'></p>
+	</li>
+	<li class="red">
+		<p><a href="/cooperation/cooperateAuthorsMainPage">已收录</a></p>
+		<p class="subtext">您所编辑的作者信息且被收录到公开库中</p>
+		<p class='subfont'  id='subfont2'></p>
+	</li>
+	<li class="blue">
+		<p><a href="/cooperation/cooperateAuthorsMainPage">审核中</a></p>
+		<p class="subtext">您已经提交的,但正在审核中的作者信息</p>
+		<p class='subfont'  id='subfont3'></p>
+	</li>
+</ul>
+<script type="text/javascript">
+	$(".authorMenu a").click(function() {
+	    $(this).blur();
+	  });
+	  $(".authorMenu li").mouseover(function() {
+	    $(this).stop().animate({
+	      height: '150px'
+	    }, {
+	      queue: false,
+	      duration: 600,
+	      easing: 'easeOutBounce'
+	    })
+	  });
+	  $(".authorMenu li").mouseout(function() {
+	    $(this).stop().animate({
+	      height: '20px'
+	    }, {
+	      queue: false,
+	      duration: 600,
+	      easing: 'easeOutBounce'
+	    })
+	  });
+	  $.ajax({
+		type: 'get',
+		url: "/cooperation/getUserEditTempAuthors",
+		datatype: "json",
+		timeout: 6000,
+		success: function(result, state, req) {
+			if(result.success == true)
+			{
+				var tempAuthors = result.tempAuthors ;
+				$('#subfont1').text(tempAuthors.length) ;
+				var usedNumber = 0 ; 
+				var submitedNumber = 0 ;
+				for(var i = 0 ; i < tempAuthors.length ; i ++){
+					if(tempAuthors[i].submitStatus == 1)
+						submitedNumber ++ ; 
+					else if(tempAuthors[i].submitStatus == 2)
+						usedNumber ++ ;
+				}
+				$('#subfont2').text(usedNumber) ;
+				$('#subfont3').text(submitedNumber) ;
+			}
+		},
+		falture: function(result, state, req) {
+			console.log('操作失败!');
+		}
+	});
+</script>

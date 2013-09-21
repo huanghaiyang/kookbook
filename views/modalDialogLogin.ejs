@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<style type="text/css">
+.modal-login-bg{
+	position: fixed;
+	left: 0;
+	top: 0;
+	z-index: 95;
+	min-height: 100%!important;
+	width: 100%!important;
+	height: 100%!important;
+	overflow: visible;
+	background: #666;
+
+	-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=50)"; /* ie8  */
+    filter:alpha(opacity=50);    /* ie5-7  */
+    -moz-opacity:0.5;    /* old mozilla browser like netscape  */
+    -khtml-opacity: 0.5;    /* for really really old safari */ 
+    opacity: 0.5; 
+	width: 1349px;
+	height: 7595px;
+	display: none;
+}
+.modal-login-main-bg{
+	width:400px;
+	height:200px;
+	background-color: #FFFFFF;
+	z-index: 99;
+	position: fixed;
+
+	-moz-box-shadow: 4px 4px 4px #7a8eb9;
+    -webkit-box-shadow: 4px 4px 4px #7a8eb9;
+    box-shadow: 4px 4px 4px #7a8eb9;
+
+    -webkit-border-radius:3px 3px 3px 3px ;
+	-moz-border-radius:3px 3px 3px 3px ;
+	-o-border-radius:3px 3px 3px 3px ;
+	border-radius:3px 3px 3px 3px ;
+	display: none;
+}
+.modal-login-title{
+	width:100%;
+	height:30px;
+	font-size: 14px;
+	font-weight: bold;
+	color:#FFFFFF;
+	line-height: 30px;
+	background-color: #5CACEE;
+	vertical-align: middle;
+}
+.modal-login-title-text{
+	margin-left: 20px;
+	float:left;
+}
+.modal-login-title-close{
+	margin-right: 10px;
+	float:right;
+	cursor: pointer;
+}
+.modal-login-title-close:hover{
+	text-decoration: underline;
+}
+.modal-login-form-div{
+	height:200px;
+	width:100%;
+	text-align: center;
+	vertical-align: top;
+}
+.modal-login-form{
+	margin-top: 20px;
+}
+.modal-login-label{
+	float: left;
+	width:100px;
+	text-align: right;
+	vertical-align: middle;
+	margin-right: 0px;
+	height:28px;
+	line-height: 28px;
+}
+.modal-login-input{
+	margin-left: 0px;
+}
+.modal-login-btns{
+	width:100%;
+	text-align: center;
+}
+.modal-login-helps{
+	width: 100%;
+	text-align: right;
+}
+.modal-login-a-m{
+	margin-right: 10px;
+	text-decoration: underline;
+}
+.modal-login-a-m:last-child{
+	margin-right: 40px;
+}
+</style>
+<div class='modal-login-bg'>
+</div>
+<div class='modal-login-main-bg'>
+	<div class='modal-login-title'>
+		<span class='modal-login-title-text'>
+			用户登录
+		</span>
+		<span class='modal-login-title-close'>
+			[close]
+		</span>
+	</div>
+	<div class='modal-login-form-div'>
+		<form method = "post" action="/login" class='modal-login-form'>
+			<label for='username' class='modal-login-label'>用户名:</label>
+			<input type='text' name='username' placeholder='请输入用户名' class='modal-login-input'>
+			<label for='password' class='modal-login-label'>密码:</label>
+			<input type='password' name='password' placeholder='请输入密码' class='modal-login-input'>
+			<div class='modal-login-helps'>
+				<a href='/losePwd' class='modal-login-a-m' target='_blank'>忘记密码？</a>
+				<a href='/reg' class='modal-login-a-m'>注册</a>
+			</div>
+			<div class='modal-login-btns'>
+				<button type='button' class='btn btn-primray'>登录</button>
+				<button type='button' class='btn' id='modal-login-cancel'>取消</button>
+			</div>
+		</form>
+	</div>
+</div>
+<script type="text/javascript" src='/javascripts/modalDialogLogin.js'></script>
+<script type="text/javascript">
+	var $maskFunc ;
+	$(document).ready(function(){
+		$maskFunc = $(document).modalDialogLogin();
+	}) ; 	
+</script>

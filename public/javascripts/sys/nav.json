@@ -1,0 +1,46 @@
+[{
+	"text": "系统管理",
+	"leaf": false,
+	"children": [{
+		"text": "系统设置",
+		"leaf": true,
+		"id": "sysSettings",
+		"action": "/sys/tab-sys-settings"
+	}, {
+		"text": "管理员",
+		"leaf": true,
+		"id": "adminView",
+		"action": "/sys/tab-admin-view"
+	}, {
+		"text": "数据管理",
+		"leaf": true,
+		"children": [{
+			"text": "书籍管理",
+			"leaf": true,
+			"children": [{
+				"text": "书籍录入与查看",
+				"leaf": true,
+				"id": "bookView",
+				"action": "/sys/tab-book-view"
+			}]
+		}, {
+			"text": "作者管理",
+			"leaf": true,
+			"children": [{
+				"text": "作者录入与查看",
+				"leaf": true,
+				"id": "authorView",
+				"action": "/sys/tab-author-view"
+			}]
+		}, {
+			"text": "书籍分类",
+			"leaf": true,
+			"children": [{
+				"text": "分类录入与查看",
+				"leaf": true,
+				"id": "cataView",
+				"action": "/sys/tab-cata-view"
+			}]
+		}]
+	}]
+}]

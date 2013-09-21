@@ -1,0 +1,193 @@
+<!doctype html>
+<style type="text/css">
+	.modal-search-authorname-bg{
+		position: fixed;
+		left: 0;
+		top: 0;
+		z-index: 95;
+		min-height: 100%!important;
+		width: 100%!important;
+		height: 100%!important;
+		overflow: visible;
+		background: #666;
+
+		-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=50)"; /* ie8  */
+	    filter:alpha(opacity=50);    /* ie5-7  */
+	    -moz-opacity:0.5;    /* old mozilla browser like netscape  */
+	    -khtml-opacity: 0.5;    /* for really really old safari */ 
+	    opacity: 0.5; 
+		width: 1349px;
+		height: 7595px;
+		display: none;
+	}
+	.search-authorname-div{
+		width:400px;
+		background-color: #FFFFFF;
+		z-index: 99;
+		position: fixed;
+
+		-moz-box-shadow: 4px 4px 4px #7a8eb9;
+	    -webkit-box-shadow: 4px 4px 4px #7a8eb9;
+	    box-shadow: 4px 4px 4px #7a8eb9;
+
+	    -webkit-border-radius:3px 3px 3px 3px ;
+		-moz-border-radius:3px 3px 3px 3px ;
+		-o-border-radius:3px 3px 3px 3px ;
+		border-radius:3px 3px 3px 3px ;
+		display: none;
+	}
+	.search-authorname-title{
+		width:100%;
+		height:30px;
+		font-size: 14px;
+		font-weight: bold;
+		color:#FFFFFF;
+		line-height: 30px;
+		background-color: #5CACEE;
+		vertical-align: middle;
+	}
+	.search-authorname-title-text{
+		margin-left: 20px;
+	}
+	.search-authorname-close{
+		float: right;
+		margin-right: 10px;
+		cursor: pointer;
+	}
+	.search-authorname-close:hover{
+		text-decoration: underline;
+	}
+	.search-authorname-main{
+		width: 100%;
+	}
+	#authorname_search{
+		float: left;
+		margin-left: 10px;
+	}
+	.search-authorname-label{
+		float: left;
+		text-align:right;
+		height: 28px;
+		line-height: 28px;
+	}
+	.search-authorname-control{
+		margin-left: 10px;
+		margin-top: 10px;
+		float: left;
+		display: block;
+		height:30px;
+		margin-bottom: 10px;
+		width: 100%;
+	}
+	#search-authorname-btn,#search-authorname-select{
+		float: left;
+	}
+	#search-authorname-select{
+		margin-left: 5px;
+		margin-top: -5px;
+		display: none;
+	}
+	.search-result{
+		width: 100%;
+		overflow-x:hidden; 
+	}
+	.result-one{
+		height:20px;
+		line-height: 20px;
+		margin-left: 50px;
+		margin-bottom: 5px;
+	}
+	input[type='checkbox']{
+		vertical-align: text-top;
+		margin-right: 5px;
+		border: 1px solid #D15E34;
+	}
+
+	.pageDiv{
+		width:100%;
+		height:20px;
+		vertical-align:top;
+		text-align:right;
+		padding-top:10px;
+		border-top:1px dashed #E5E5E5;
+	}
+</style>
+<link rel="stylesheet" type="text/css" href="/stylesheets/commonPageBar.css">
+<script type="text/javascript" src='/javascripts/commonPageBar.js'></script>
+<div class='modal-search-authorname-bg'>
+</div>
+<div class='search-authorname-div'>
+	<div class='search-authorname-title'>
+		<span class='search-authorname-title-text'>
+			检索作者信息
+		</span>
+		<span class='search-authorname-close close-'>
+			[close]
+		</span>
+	</div>
+	<div class='search-authorname-main'>
+		<div class='search-authorname-control'>
+			<label for="authorname_search" class='search-authorname-label'>名称:</label>
+			<div class="input-append">
+				<input type='text' name='authorname_search' id='authorname_search' required='true'>
+				<button id='search-authorname-btn' class='btn'><i class=" icon-search icon-black"></i>检索</button>
+			</div>
+			<button class='btn btn-primary' id='search-authorname-select'>选择</button>
+		</div>
+		<div class='search-result' id='searchResult'>
+		</div>
+		<div class='pageDiv'>
+			<div style='float:right;' id='pageBar'>
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript" src='/javascripts/searchAuthornameForSignIn_modal.js'></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		var ajaxGetAuthor = function(){
+			var authorname = $('#authorname_search').val();
+			if(authorname)
+			{
+				$.ajax({
+					type:"post",
+					url:'/search/searchAuthornameSimple',
+					data:{
+						'searchName':authorname,
+						'page':'1'
+					},
+					datatype:'json',
+					success:function(result , state , req){
+						if(result.success === true)
+						{
+							$('#searchResult').html('');
+							var authors = result.authors ; 
+							if(authors.length > 0)
+							{
+								$('#search-authorname-select').show();
+								for(var i = 0 ; i < authors.length ; i ++)
+								{
+									$('#searchResult').append('<div class="result-one">'+authors[i].name+'</div>');
+								}
+								searchAuthornameModal.resetPosition();
+							}
+							else
+							{
+								$('#search-authorname-select').hide();
+								$('#searchResult').append('<div class="result-one"><font color="red">没有结果，亲！不如换个关键字</font></div>');
+							}
+						}
+					},
+					falture:function(result , state , req){
+
+					}
+				});
+			}
+		};
+		$('#search-authorname-btn').click(ajaxGetAuthor);
+		$('#pageBar').commonPageBar({
+			count : 100,
+			page:1
+		});
+	});
+</script>

@@ -1,0 +1,84 @@
+<!doctype html>
+<style type="text/css">
+	.view-tab{
+		height: 25px;
+		line-height: 25px;
+		width: 100%;
+		margin-top: 2px;
+		margin-bottom: 2px; 
+		position: relative;
+		border-bottom: 1px solid #e4e4e4;
+		background-color: #FFFFFF;
+	}
+	.tab-ul{
+		list-style: none;
+		height: 25px;
+		line-height: 25px;
+		vertical-align: middle;
+		margin-top: 0px;
+		padding-left: 0px;
+		margin-left: 5px;
+	}
+	.tab-li{
+		height: 20px;
+		margin-bottom: 0px;
+		width: 80px;
+		text-overflow:ellipsis;
+		word-break:break-all;
+		color: #FFFFFF;
+		float: left;
+		text-align: center;
+		margin-top: 5px;
+		background-color: #CD919E;
+		border-radius: 4px 4px 0 0;
+		margin-left: 1px;
+		position: relative;
+	}
+	.tab-close{
+		position: absolute;
+		right: 2px;
+		top:2px;
+		background-color: #FFFFFF;
+		width: 8px;
+		height: 8px;
+		border-radius: 4px;
+		display: block;
+		color: #000000;
+	}
+	.tab-close:hover{
+		background-color: #A2B5CD;
+		cursor: default;
+	}
+</style>
+<div class='view-tab'>
+	<ul class='tab-ul' id="tabUl">
+	</ul>
+</div>
+<script type="text/javascript">
+	(function(){
+		$.fn.tabFactory = function(options){
+			var $t = $(this);
+			var defaults = {};
+			var $opts = $.extend({} , defaults , options);
+			var template = '<li class="tab-li"><span class="tab-close" title="点击关闭标签页"></span><span class="tab-text"></span></li>';
+			var TabFactory = function(){};
+			TabFactory.newTab = function(id , text){
+				var tab = $(template).clone();
+				if(id)
+					tab.attr({
+						'data-tabId':'tab_' + id
+					});
+				if(text)
+					tab.children('.tab-text').html(text);
+				$t.append(tab);
+				$('.tab-close').click(function(){
+					var p = $(this).parent();
+					$('#panel_' + p.attr('data-tabId').split('_')[1]).parent().remove();
+					p.remove();
+				});
+				return tab;
+			};
+			return TabFactory;
+		};
+	})(jQuery);
+</script>

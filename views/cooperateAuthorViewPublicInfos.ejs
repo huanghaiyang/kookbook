@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<%-include header%>
+<%-include indexSearch%>
+<%-include userReadStatus%>
+<style type="text/css">
+	.info-view-title{
+		height: 40px;
+		font-weight: bold;
+		font-size: 16px;
+		line-height: 40px;
+		color: #EE7600;
+		margin-top: 20px;
+	}
+	.container-info{
+		margin-top: 30px;
+		width: 100%;
+		text-indent:2em;
+		line-height:300%;
+	}
+	.container-info p{
+		margin-top: 20px;
+	}
+	.info-textarea{
+		line-height: 300%;
+	}
+</style>
+<div class="container">
+	<div class='row'>
+		<div class='span12'>
+			<div class='info-view-title'>
+				<%=tempAuthor.chinesename%>
+			</div>	
+			<%-partial('cooperateAuthorViewPublicTab',{tempAuthorId : tempAuthor._id , tab:'detail'})%>
+			<div class='container-info'>
+				<p>
+					<span class='info-label'>中文名称：</span><span class='info-txt'><%=tempAuthor.chinesename%></span>					
+				</p>
+				<p>
+					<span class='info-label'>英文名称：</span><span class='info-txt'><%=tempAuthor.englishname%></span>				
+				</p>
+				<p>
+					<span class='info-label'>笔名或曾用名：</span>
+					<%
+						for(var i = 0 ; i < tempAuthor.pencilnames.length ; i ++){
+							if(i !== tempAuthor.pencilnames.length - 1)
+							{
+								%>
+								<span class='info-txt'><%=tempAuthor.pencilnames[i]%>、</span>
+								<%
+							}
+							else
+							{
+								%>
+								<span class='info-txt'><%=tempAuthor.pencilnames[i]%></span>
+								<%
+							}
+						}
+					%>
+				</p>
+				<p>
+					<span class='info-label'>民族：</span>
+					<span class='info-txt'><%=tempAuthor.race%></span>
+					</p>
+					<p>
+						<span class='info-label'>性别：</span>
+					<%
+						if(tempAuthor.sex === 1)
+						{
+							%>
+							<span class='info-txt'>男</span>
+							<%
+						}
+					else{
+						%>
+						<span class='info-txt'>女</span>
+						<%
+					}
+					%>
+				</p>
+				<p>
+					<span class='info-label'>所在地区：</span>
+					<span class='info-txt'><%=tempAuthor.address.country%></span>
+					<%
+						if(tempAuthor.address.province)
+						{
+							%>
+							<span class='info-txt'>&<%=tempAuthor.address.province%></span>
+							<%
+								if(tempAuthor.address.city)
+									{
+										%>
+										<span class='info-txt'>&<%=tempAuthor.address.city%></span>
+										<%
+									}
+							%>
+							<%
+						}
+					%>
+				</p>
+				<p>
+					<span class='info-label'>出生地：</span>
+					<span class='info-txt'><%=tempAuthor.address_birth%></span>
+				</p>
+				<p>
+					<span class='info-label'>出生日期：</span>
+					<%
+					if(tempAuthor.birthday)
+						{
+							var d = new Date(tempAuthor.birthday) ;
+							var month = '' ; 
+							if(d.getMonth() + 1 < 10)
+								month = '0' + (d.getMonth() + 1) ; 
+							else
+								month = d.getMonth() + 1 ; 
+							var day = '' ; 
+							if(d.getUTCDate() < 10)
+								day = '0' + d.getUTCDate() ; 
+							else
+								day = d.getUTCDate() ;
+							var birthday = d.getFullYear() + '-' + month + '-' +  day ; 
+							%>
+								<span class='info-txt'><%=birthday%></span>
+							<%
+						}
+				%>
+				</p>
+				<p>
+					<span class='info-label'>职业：</span>
+					<span class='info-txt'><%=tempAuthor.job%></span>
+				</p>
+				<p>
+					<span class='info-label'>毕业院校：</span>
+					<span class='info-txt'><%=tempAuthor.graduateSchool%></span>
+				</p>
+				<p>
+					<span class='info-label'>成就奖项：</span>
+					<span class='info-txt'><%=tempAuthor.worth%></span>
+				</p>
+				<p>
+					<span class='info-label'>履历：</span>
+					<span class='info-textarea'><%=tempAuthor.introduction%></span>
+				</p>
+			</div>
+			<%-include bottomBar%>	
+		</div>
+	</div>
+</div>

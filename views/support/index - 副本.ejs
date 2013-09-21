@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+     <head>
+          <title><%= title%> -KookBook-后台管理</title>
+          <meta charset="UTF-8" />
+          <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <script type="text/javascript" src="/ext-4.2.1.883/ext-all-debug.js"></script>
+          <link rel="stylesheet" type="text/css" href="/ext-4.2.1.883/resources/css/ext-all-debug.css">
+          <style type="text/css">
+          .settings {
+              background-image:url(/ext-4.2.1.883/examples/shared/icons/fam/folder_wrench.png);
+          }
+          .nav {
+              background-image:url(/ext-4.2.1.883/examples/shared/icons/fam/folder_go.png);
+          }
+          .info {
+              background-image:url(/ext-4.2.1.883/examples/shared/icons/fam/information.png);
+          }
+          .logout_icon{
+               background-image:url(/images/sign-out.png);
+               background-size:15px;
+          }
+          </style>
+          <script type="text/javascript">
+          Ext.require(['*']);
+
+         Ext.onReady(function() {
+
+             Ext.QuickTips.init();
+             Ext.state.Manager.setProvider(Ext.create('Ext.state.CookieProvider'));
+             // in this instance the TabPanel is not wrapped by another panel
+            // since no title is needed, this Panel is added directly
+            // as a Container
+            var tabPanel = Ext.create('Ext.tab.Panel', {
+                region: 'center', // a center region is ALWAYS required for border layout
+                deferredRender: false,
+                activeTab: 0,     // first tab initially active
+                items: [ {
+                    contentEl: 'center1',
+                    title: '欢迎登录',
+                    autoScroll: true
+                }]   
+            }) ;
+             Ext.regModel('menu' ,{
+                  fields : ['text' , 'url']
+             }) ;
+             var menuStore = Ext.create('Ext.data.TreeStore' , {
+                  model : "menu" ,
+                  proxy : {
+                       type : "memory" ,
+                       data : [{
+                            text : "作者" ,
+                            leaf : false ,
+                            children : [{
+	 							text : "添加作者" ,
+	                            leaf : true ,
+	                            url : '/support/authorAdd' 
+                            }]
+                       } , 
+						{
+                            text : "译者" ,
+                            leaf : false ,
+                            children : [{
+	 							text : "添加译者" ,
+	                            leaf : true ,
+	                            url : '/support/translatorAdd' 
+                            }]
+                       }, 
+						{
+                            text : "图书" ,
+                            leaf : false ,
+                            children : [{
+	 							text : "图书分类添加" ,
+	                            leaf : true ,
+	                            url : '/support/bookCategrayAdd' 
+                            }]
+                       }]
+                  } ,
+                  root : {
+                       text : "信息管理" ,
+                       leaf : false ,
+                       expanded : true
+                  }
+             }) ;
+             var menuTree = Ext.create('Ext.tree.Panel' , {
+                  border : false ,
+                  store : menuStore ,
+                  hrefTarget : 'center1' ,
+                  listeners:{ 
+                      'itemclick':function(view  , node , rec , index , e){ 
+                        var randomnumber=Math.floor(Math.random()*100000);//作为地址的传递参数 以使每次访问时重新获取数据 而非缓存中信息 
+                        var tab = Ext.get('tab_'+node.id); 
+                        e.stopEvent();//停止事件传递 否则会促使浏览器发送URL（菜单链接）向服务器发送请求 
+                        if(node.data.leaf){ 
+                           if(tab == null){ 
+                               var subTabPanel = new Ext.Panel({ 
+                                 id:'tab_'+node.id, 
+                                 title:node.data.text, 
+                                 closable:true, 
+                                 html:'<iframe id="iframe_'+node.id+'" name="iframe_'+node.id+'" scrolling="auto" frameborder="0" width="100%" height="100%" src="'+node.data.url+"?random="+randomnumber+'"></iframe>' 
+                               }); 
+                               tabPanel.add(subTabPanel);//添加该panel 
+                               tabPanel.setActiveTab('tab_'+node.id);//激活它 
+                                
+                           }else{ 
+                               tabPanel.setActiveTab("tab_"+node.id);//如果已经存在 则激活它 
+                           } 
+                            
+                        } 
+                      } 
+                    }
+             }) ;
+             var viewport = Ext.create('Ext.Viewport', {
+                 id: 'border-example',
+                 layout: 'border',
+                 items: [
+                 // create instance immediately
+                 Ext.create('Ext.Component', {
+                     region: 'north',
+                     height: 32, // give north and south regions a height
+                     contentEl:'north'
+                 }),{
+                     // lazily created panel (xtype:'panel' is default)
+                     region: 'south',
+                     split: true,
+                     height: 20,
+                     minSize: 100,
+                     maxSize: 200,
+                     margins: '0 0 0 0' ,
+                     bbar:[{
+                                   text : '退出',
+                                   iconCls : 'logout_icon',
+                                   handler : function() {
+                                        Ext.Ajax.request({
+                                             waitMsg: '正在退出',
+                                      waitTitle: '提示',
+                                             url : '/support/adminLogout' ,
+                                             method : 'get' ,
+                                             success: function(response , options) {
+                                             var result = Ext.JSON.decode(response.responseText); 
+                                      if(result.error)
+                                      {
+                                        Ext.MessageBox.alert(result.error) ;
+                                        return ;
+                                      }
+                                      else if(result.success == "true")
+                                        window.location = "/support/adminLogin" ;
+                                   },
+                                   failure: function(response , options) {
+                                      Ext.MessageBox.alert("退出失败!") ;
+                                   }
+                                        }) ;
+                                   }
+                     }]
+                 },{
+                     region: 'west',
+                     stateId: 'navigation-panel',
+                     id: 'west-panel', // see Ext.getCmp() below
+                     title: '导航',
+                     split: true,
+                     width: 200,
+                     minWidth: 175,
+                     maxWidth: 400,
+                     collapsible: true,
+                     animCollapse: true,
+                     margins: '0 0 0 5',
+                     layout: 'accordion',
+                     items: [{
+                         contentEl: 'west',
+                         title: '管理菜单',
+                         iconCls: 'nav', // see the HEAD section for style used ,
+                         items : [menuTree]
+                     }, {
+                          contentEl: 'west',
+                         title: '系统设置',
+                         iconCls: 'settings'
+                     }, {
+                          contentEl: 'west',
+                         title: '消息管理',
+                         iconCls: 'info'
+                     }]
+                 },tabPanel]
+             });
+         });
+    </script>
+     </head>
+     <body>
+          <div id="north">
+               <h3 style="float:left;">KookBook后台管理系统</h3>
+               <p style="float:right;">欢迎您:<%if(admin){%><%=admin.name%><%}%></p>
+          </div>
+          <div id="west" class="x-hide-display">
+             <p></p>
+         </div>
+         <div id="center1" class="x-hide-display">
+         </div>
+     </body>
+</html>

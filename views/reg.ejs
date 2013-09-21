@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<%-include header%>
+<style type="text/css">
+	#login_title{
+		text-align: center;
+	}
+	#form_field{
+		margin-top:50px;
+	}
+</style>
+<div class="container">
+	<form class="form-horizontal" method="post" action="/reg">
+		<fieldset id="form_field">
+			<legend id="login_title">用户注册</legend>
+			<div class="control-group">
+				<div class="control-label" for="username">用户名</div>
+				<div class="controls">
+					<input type="text" class="input-xlarge" id="username" name="username">
+					<p class="help-inline"><%if(error!=""){%><font color="red"><%=error%></font><%}else{%>用户名用于登陆于显示<%}%></p>
+				</div>
+			</div>
+			<div class="control-group">
+				<div class="control-label" for="password">密码</div>
+				<div class="controls">
+					<input type="password" class="input-xlarge" id="password" name="password">
+					<p class="help-inline">使用密码用以安全登录与账户管理</p>
+				</div>
+			</div>
+
+			<div class="control-group">
+				<div class="control-label" for="password-repeat">重复密码</div>
+				<div class="controls">
+					<input type="password" class="input-xlarge" id="password-repeat" name="password-repeat">
+					<p class="help-inline">再次输入密码以保证账户安全</p>
+				</div>
+			</div>
+			<div class="control-group">
+				<div class="control-label" for="email">电子邮件</div>
+				<div class="controls">
+					<input type="text" class="input-xlarge" id="email" name="email">
+					<p class="help-inline">绑定电子邮件方便您管理账户以及找回密码</p>
+				</div>
+			</div>
+			<div class="form-actions">
+				<button class="btn btn-primray" type="submit">注册</button>
+			</div>
+		</fieldset>
+	</form>
+</div>
+<script type="text/javascript">
+	$('#username').focus() ; 
+</script>

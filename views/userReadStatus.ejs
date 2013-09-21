@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<style type="text/css">
+	.readStatus,.readStatus_{
+		font-size:14px;
+		color:#E9967A;
+		display:inline-block;
+	}	
+	.readStatus{
+		margin-right:15px;
+	}
+	.readStatus:hover,.readStatus_:hover{
+		text-decoration: underline;
+		cursor: pointer;
+		color:#000000;
+	}
+	.readStatus_{
+		float:right;
+	}
+</style>
+<div style='margin:0px;background-color:#F5F5F5;border-top:1px solid #E5E5E5;'>
+	<div class="container" style='margin-bottom:0px;margin-top:0px;padding:0px;'>
+		<div class='span12' style='text-align:left;margin-left:0px;height:40px;line-height:40px;'>
+			<%
+				if(user)
+				{
+					%>
+					<span class='readStatus'>
+						读书
+					</span>
+					<span  class='readStatus'>
+						笔记
+					</span>
+					<span  class='readStatus'>
+						书单
+					</span>
+					<span  class='readStatus_'>
+						<a href='/cooperation/cooperateCountNumberBoard'>协作编辑</a>
+					</span>
+					<%
+				}
+			%>
+			<span  class='readStatus'>
+				淘书
+			</span>
+		</div>
+	</div>
+</div>

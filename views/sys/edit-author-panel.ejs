@@ -1,0 +1,103 @@
+<!doctype html>
+<style type="text/css">
+	.column-group{
+		float: left;
+		width: 300px;
+		margin-top: 10px;
+		height: 30px;
+		line-height: 30px;
+		vertical-align: middle;
+	}
+	label{
+		width: 80px;
+		float: left;
+		margin-left: 0px;
+		text-align: right;
+	}
+	.column-input{
+		width: 200px;
+		margin-left: 10px;
+		float: left;
+		vertical-align: middle;
+		height: 20px;
+	}
+	.column-actions{
+		width: 100%;
+		text-align: center;
+		display:inline-block;
+		height: 30px;
+		margin-top: 10px;
+	}
+	#authorEdit{
+		display: none;
+		width: 600px;
+		height: auto;
+		height:200px;
+		background-color: #FFFFFF;
+		z-index: 99;
+		position: fixed;
+		-moz-box-shadow: 4px 4px 4px #7a8eb9;
+	    -webkit-box-shadow: 4px 4px 4px #7a8eb9;
+	    box-shadow: 4px 4px 4px #7a8eb9;
+	    -webkit-border-radius:3px 3px 3px 3px ;
+		-moz-border-radius:3px 3px 3px 3px ;
+		-o-border-radius:3px 3px 3px 3px ;
+		border-radius:3px 3px 3px 3px ;
+		display: none;
+		left: 100px;
+		top: 100px;
+		font-size: 12px;
+	}
+	.panel-title{
+		width:100%;
+		height:30px;
+		font-size: 14px;
+		font-weight: bold;
+		color:#FFFFFF;
+		line-height: 30px;
+		background-color: #5CACEE;
+		vertical-align: middle;
+	}
+	.panel-close{
+		float: right;
+		margin-right: 10px;
+	}
+</style>
+<div id='authorEdit'>
+	<div class='panel-title'><span style='margin-left:10px;'>作者信息编辑</span><span class='panel-close'>[关闭]</span></div>
+	<div class='column-group'>
+		<label for='name'>
+			作者名称:
+		</label>
+		<input type='text' name='name' id='name' class='column-input'>
+	</div>
+	<div class='column-group'>
+		<label for='secName'>
+			笔名或别名:
+		</label>
+		<input type='text' name='secName' id='secName' class='column-input'>
+	</div>
+	<div class='column-group'>
+		<label for='sex'>
+			性别:
+		</label>
+		<input type='radio' name='sex' id='sex'>男
+		<input type='radio' name='sex' id='sex'>女
+	</div>
+	<div class='column-group'>
+		<label for='email'>
+			电子邮箱:
+		</label>
+		<input type='text' name='email' id='email' class='column-input'>
+	</div>
+	<div class='column-group'>
+		<label for='website'>
+			作品网址:
+		</label>
+		<input type='text' name='website' id='website' class='column-input'>
+	</div>
+	<div class='column-actions'>
+		<input type='button' id='updateBtn' value='更&nbsp;&nbsp;新'>
+		<input type='button' id='cancelBtn' value='取&nbsp;&nbsp;消'>
+	</div>
+</div>

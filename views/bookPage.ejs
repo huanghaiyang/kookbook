@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<style type="text/css">
+	.pageSpan,.pageSpanActive{
+		height:20px;
+		-webkit-border-radius:3px 3px 3px 3px;
+		-moz-border-radius:3px 3px 3px 3px;
+		border-radius:3px 3px 3px 3px;
+		font-size:14px;
+		padding-right:5px;
+		padding-left: 5px;
+		margin-right:5px;
+	}
+	.pageSpan:hover{
+		background-color:#FFF0F5;
+		cursor: pointer;
+	}
+	.pageSpanActive{
+		background-color: #CAE1FF;
+		color:black;
+	}
+	.pageP,.pageB{
+		font-size:14px;
+		color:#000000;
+	}
+	.pageP{
+		margin-right:10px;
+	}
+	.pageB{
+		margin-left: 10px;
+	}
+	.pageDiv{
+		width:100%;
+		height:20px;
+		vertical-align:top;
+		text-align:right;
+		padding-top:10px;
+		border-top:1px dashed #E5E5E5;
+	}
+</style>
+<div class='pageDiv'>
+	<div style='float:right;'>
+		<%
+			var num = Math.ceil(count/searchPageSize) ;
+			%>
+			<%
+				if(page > 1)
+				{
+					%>
+					<a class='pageP' href='/server/searchBooks?searchName=<%=searchName%>&page=<%=page-1%>'><前一页</a>
+					<%
+				}
+			%>
+			<%
+				if(page - 4 > 1)
+				{
+					%>
+					<a class='pageP' href='/server/searchBooks?searchName=<%=searchName%>&page=<%=page-5%>'>...</a>
+					<%
+				}
+			%>
+			<%
+			for(var i = page-4; i < page; i ++)
+			{
+				%>
+				<%
+					if(i <=0)
+						continue;
+					if(page == i){
+				%>
+					<a class='pageSpanActive' href='/server/searchBooks?searchName=<%=searchName%>&page=<%=i%>'><%=i%></a>
+				<%}else{%>
+					<a class='pageSpan' href='/server/searchBooks?searchName=<%=searchName%>&page=<%=i%>'><%=i%></a>
+				<%}%>
+				<%
+			}
+			for(var i = page ; i <= page + 4 ; i ++)
+			{
+				%>
+				<%
+					if(i > num)
+						continue;
+					if(page == i){
+				%>
+					<a class='pageSpanActive' href='/server/searchBooks?searchName=<%=searchName%>&page=<%=i%>'><%=i%></a>
+				<%}else{%>
+					<a class='pageSpan' href='/server/searchBooks?searchName=<%=searchName%>&page=<%=i%>'><%=i%></a>
+				<%}%>
+				<%
+			}
+			%>
+			<%
+				if(page + 4 < num)
+				{
+					%>
+					<a class='pageP' href='/server/searchBooks?searchName=<%=searchName%>&page=<%=page+5%>'>...</a>
+					<%
+				}
+			%>
+			<%
+				if(page < num)
+				{
+					%>
+					<a class='pageB' href='/server/searchBooks?searchName=<%=searchName%>&page=<%=page+1%>'>后一页></a>
+					<%
+				}
+			%>
+			<%
+		%>
+	</div>
+</div>

@@ -1,0 +1,123 @@
+<!doctype html>
+<style type="text/css">
+	#tableView{
+		height: 300px;
+		background-color: #FFFFFF;
+		width: 100%;
+		margin-top: 10px;
+		font-size:12px;
+	}
+	#authorTable{
+		border-collapse: collapse;
+	}
+	#authorTable td{
+		border: 1px solid #e4e4e4;
+		padding-left: 4px;
+		padding-right: 4px;
+		padding-top: 4px;
+		padding-bottom: 4px;
+	}
+</style>
+<script type="text/javascript">
+	var columns = {
+		id :{
+			type :'string',
+			bind :true
+		},
+		name :{
+			type :'string'
+		},
+		secName :{
+			type :'string'
+		},
+		sex :{
+			type :'string',
+			render :function(v){
+				if(v === 1)
+					return '男';
+				else if(v === 0)
+					return '女';
+			}
+		},
+		email:{
+			type :'string'
+		},
+		website :{
+			type :'string',
+			
+		}
+	};
+</script>
+<div id='tableView'>
+	<table id='authorTable'>
+		<tr>
+			<TD>
+				<input type='checkbox' name='authorids'>
+			</TD>
+			<TD>
+				ID
+			</td>
+			<TD>
+				作者姓名
+			</TD>
+			<TD>
+				笔名或别名
+			</TD>
+			<TD>
+				性别
+			</TD>
+			<TD>
+				电子邮件
+			</TD>
+			<TD>
+				作品网址
+			</TD>
+		</tr>
+	</table>
+	<%-include tab-table-bottom-bar%>
+</div>
+<%-include overlay-bg%>
+<%-include edit-panel-open%>
+<%-include edit-author-panel%>
+<script type="text/javascript" src="/javascripts/jquery-1.8.2.js"></script>
+<script type="text/javascript">
+	$.ajax({
+		type:"get",
+		url:'/support/listAuthorAllByJson_bk',
+		data:{
+		},
+		datatype:'json',
+		success:function(result , state , req){
+			var totalCount = result.totalCount;
+			var items = result.items;
+			if($('#pageNo'))
+				$('#pageNo').val(Math.ceil(parseInt(totalCount) / 10));
+
+			for(var i = 0 ; i < items.length ; i ++)
+			{
+				var tr = $('<tr></tr>');
+				tr.bind('dblclick',function(ev){
+					openEditPanel($(this).attr('data-bindid') , 'author');
+				});
+				tr.append('<td><input type="checkbox" name="authorids"></td>');
+				var item = items[i];
+				for(var key in columns)
+				{
+					var td = $('<td></td>');
+					var value = '';
+					if(columns[key].render)
+						value = columns[key].render(item[key]);
+					else 
+						value = item[key];
+					if(columns[key].bind &&columns[key].bind === true)
+						tr.attr('data-bindid' , item[key]);
+					td.html(value);
+					tr.append(td);
+				}
+				$('#authorTable').append(tr);
+			}
+		},
+		falture:function(result , state , req){
+		}
+	});
+</script>

@@ -1,0 +1,186 @@
+<!doctype html>
+<html>
+  <head>
+    <title>test</title>
+  <style type="text/css">
+    .main{
+        width:600px;
+        height:500px;
+        margin:10px auto;
+        border:1px solid #ccc;
+    }
+
+    .item{
+        width:50px;
+        height:20px;
+        line-height:20px;
+        border:1px solid #ccc;
+        float:left;
+        margin:2px 2px;
+    }
+    </style>
+    <script type="text/javascript" src="jquery.js"></script> 
+    <script type="text/javascript"> 
+    function GetColor(){
+        var str = "0123456789abcdef"; 
+
+        var t = "#"; 
+
+        for(j=0;j<6;j++) 
+        {
+         t = t+ str.charAt(Math.random()*str.length);
+        } 
+        return t;
+    }
+
+    var arr = new Array();
+    var i=0;
+
+    function setColor(){
+        var num = parseInt(Math.random()*(100-1+1)+1); 
+        var t=0;
+
+        if(arr.length == 100){
+            $("div").css("background-color", "#ffffff");
+
+            i = 0;
+            arr = [];
+        }
+
+        if(i==0){
+            arr[i] = num;
+            i++;
+        }else{
+            for(var j=0;j<arr.length;j++){
+                if(num == arr[j]){
+                    t++;
+                }
+            }
+
+            if(t>0){
+                setColor();
+            }else{
+                arr[i] = num;
+
+                console.log('i:' +i + '   num:'+num);
+
+                i++;
+            }
+        }
+
+        var id ="#d"+num;
+
+        var color = GetColor();
+
+        //$("div").css("background-color", "#ffffff");
+        $(id).css("background-color", "#333333");
+
+        setTimeout("setColor()", 500);
+    }
+    </script>
+  </head>
+  <body onload="setColor()">
+    <div class="main">
+      <div id="d1" class="item">&nbsp;&nbsp;</div>
+      <div id="d2" class="item">&nbsp;&nbsp;</div>
+      <div id="d3" class="item">&nbsp;&nbsp;</div>
+      <div id="d4" class="item">&nbsp;&nbsp;</div>
+      <div id="d5" class="item">&nbsp;&nbsp;</div>
+      <div id="d6" class="item">&nbsp;&nbsp;</div>
+      <div id="d7" class="item">&nbsp;&nbsp;</div>
+      <div id="d8" class="item">&nbsp;&nbsp;</div>
+      <div id="d9" class="item">&nbsp;&nbsp;</div>
+      <div id="d10" class="item">&nbsp;&nbsp;</div>
+      <div id="d11" class="item">&nbsp;&nbsp;</div>
+      <div id="d12" class="item">&nbsp;&nbsp;</div>
+      <div id="d13" class="item">&nbsp;&nbsp;</div>
+      <div id="d14" class="item">&nbsp;&nbsp;</div>
+      <div id="d15" class="item">&nbsp;&nbsp;</div>
+      <div id="d16" class="item">&nbsp;&nbsp;</div>
+      <div id="d17" class="item">&nbsp;&nbsp;</div>
+      <div id="d18" class="item">&nbsp;&nbsp;</div>
+      <div id="d19" class="item">&nbsp;&nbsp;</div>
+      <div id="d20" class="item">&nbsp;&nbsp;</div>
+      <div id="d21" class="item">&nbsp;&nbsp;</div>
+      <div id="d22" class="item">&nbsp;&nbsp;</div>
+      <div id="d23" class="item">&nbsp;&nbsp;</div>
+      <div id="d24" class="item">&nbsp;&nbsp;</div>
+      <div id="d25" class="item">&nbsp;&nbsp;</div>
+      <div id="d26" class="item">&nbsp;&nbsp;</div>
+      <div id="d27" class="item">&nbsp;&nbsp;</div>
+      <div id="d28" class="item">&nbsp;&nbsp;</div>
+      <div id="d29" class="item">&nbsp;&nbsp;</div>
+      <div id="d30" class="item">&nbsp;&nbsp;</div>
+      <div id="d31" class="item">&nbsp;&nbsp;</div>
+      <div id="d32" class="item">&nbsp;&nbsp;</div>
+      <div id="d33" class="item">&nbsp;&nbsp;</div>
+      <div id="d34" class="item">&nbsp;&nbsp;</div>
+      <div id="d35" class="item">&nbsp;&nbsp;</div>
+      <div id="d36" class="item">&nbsp;&nbsp;</div>
+      <div id="d37" class="item">&nbsp;&nbsp;</div>
+      <div id="d38" class="item">&nbsp;&nbsp;</div>
+      <div id="d39" class="item">&nbsp;&nbsp;</div>
+      <div id="d40" class="item">&nbsp;&nbsp;</div>
+      <div id="d41" class="item">&nbsp;&nbsp;</div>
+      <div id="d42" class="item">&nbsp;&nbsp;</div>
+      <div id="d43" class="item">&nbsp;&nbsp;</div>
+      <div id="d44" class="item">&nbsp;&nbsp;</div>
+      <div id="d45" class="item">&nbsp;&nbsp;</div>
+      <div id="d46" class="item">&nbsp;&nbsp;</div>
+      <div id="d47" class="item">&nbsp;&nbsp;</div>
+      <div id="d48" class="item">&nbsp;&nbsp;</div>
+      <div id="d49" class="item">&nbsp;&nbsp;</div>
+      <div id="d50" class="item">&nbsp;&nbsp;</div>
+      <div id="d51" class="item">&nbsp;&nbsp;</div>
+      <div id="d52" class="item">&nbsp;&nbsp;</div>
+      <div id="d53" class="item">&nbsp;&nbsp;</div>
+      <div id="d54" class="item">&nbsp;&nbsp;</div>
+      <div id="d55" class="item">&nbsp;&nbsp;</div>
+      <div id="d56" class="item">&nbsp;&nbsp;</div>
+      <div id="d57" class="item">&nbsp;&nbsp;</div>
+      <div id="d58" class="item">&nbsp;&nbsp;</div>
+      <div id="d59" class="item">&nbsp;&nbsp;</div>
+      <div id="d60" class="item">&nbsp;&nbsp;</div>
+      <div id="d61" class="item">&nbsp;&nbsp;</div>
+      <div id="d62" class="item">&nbsp;&nbsp;</div>
+      <div id="d63" class="item">&nbsp;&nbsp;</div>
+      <div id="d64" class="item">&nbsp;&nbsp;</div>
+      <div id="d65" class="item">&nbsp;&nbsp;</div>
+      <div id="d66" class="item">&nbsp;&nbsp;</div>
+      <div id="d67" class="item">&nbsp;&nbsp;</div>
+      <div id="d68" class="item">&nbsp;&nbsp;</div>
+      <div id="d69" class="item">&nbsp;&nbsp;</div>
+      <div id="d70" class="item">&nbsp;&nbsp;</div>
+      <div id="d71" class="item">&nbsp;&nbsp;</div>
+      <div id="d72" class="item">&nbsp;&nbsp;</div>
+      <div id="d73" class="item">&nbsp;&nbsp;</div>
+      <div id="d74" class="item">&nbsp;&nbsp;</div>
+      <div id="d75" class="item">&nbsp;&nbsp;</div>
+      <div id="d76" class="item">&nbsp;&nbsp;</div>
+      <div id="d77" class="item">&nbsp;&nbsp;</div>
+      <div id="d78" class="item">&nbsp;&nbsp;</div>
+      <div id="d79" class="item">&nbsp;&nbsp;</div>
+      <div id="d80" class="item">&nbsp;&nbsp;</div>
+      <div id="d81" class="item">&nbsp;&nbsp;</div>
+      <div id="d82" class="item">&nbsp;&nbsp;</div>
+      <div id="d83" class="item">&nbsp;&nbsp;</div>
+      <div id="d84" class="item">&nbsp;&nbsp;</div>
+      <div id="d85" class="item">&nbsp;&nbsp;</div>
+      <div id="d86" class="item">&nbsp;&nbsp;</div>
+      <div id="d87" class="item">&nbsp;&nbsp;</div>
+      <div id="d88" class="item">&nbsp;&nbsp;</div>
+      <div id="d89" class="item">&nbsp;&nbsp;</div>
+      <div id="d90" class="item">&nbsp;&nbsp;</div>
+      <div id="d92" class="item">&nbsp;&nbsp;</div>
+      <div id="d93" class="item">&nbsp;&nbsp;</div>
+      <div id="d94" class="item">&nbsp;&nbsp;</div>
+      <div id="d95" class="item">&nbsp;&nbsp;</div>
+      <div id="d96" class="item">&nbsp;&nbsp;</div>
+      <div id="d97" class="item">&nbsp;&nbsp;</div>
+      <div id="d98" class="item">&nbsp;&nbsp;</div>
+      <div id="d99" class="item">&nbsp;&nbsp;</div>
+      <div id="d91" class="item">&nbsp;&nbsp;</div>
+      <div id="d100" class="item">&nbsp;&nbsp;</div>
+    </div>
+  </body>
+</html>

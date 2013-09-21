@@ -1,0 +1,163 @@
+<!doctype html>
+<style type="text/css">
+	#tableView{
+		height: 300px;
+		background-color: #FFFFFF;
+		width: 100%;
+		margin-top: 10px;
+		font-size:12px;
+	}
+	#bookTable{
+		border-collapse: collapse;
+	}
+	#bookTable td{
+		border: 1px solid #e4e4e4;
+		padding-left: 4px;
+		padding-right: 4px;
+		padding-top: 4px;
+		padding-bottom: 4px;
+	}
+</style>
+<script type="text/javascript">
+	var columns = {
+		id :{
+			type :'string'
+		},
+		name :{
+			type :'string'
+		},
+		ename :{
+			type :'string'
+		},
+		ISBN :{
+			type :'string'
+		},
+		isNewBook:{
+			type :'boolean',
+			render :function(v){
+				if(v === true)
+					return '是';
+				else if(v === false)
+					return '否';
+			}
+		},
+		isRecommanded :{
+			type :'boolean',
+			render :function(v){
+				if(v === true)
+					return '是';
+				else if(v === false)
+					return '否';
+			}
+		},
+		isHot :{
+			type :'boolean',
+			render :function(v){
+				if(v === true)
+					return '是';
+				else if(v === false)
+					return '否';
+			}
+		},
+		price :{
+			type :'double'
+		},
+		isStore:{
+			type :'boolean',
+			render :function(v){
+				if(v === true)
+					return '是';
+				else if(v === false)
+					return '否';
+			}
+		},
+		bookVersion:{
+			type :'string'
+		},
+		storeNumber:{
+			type :'number'
+		}
+	};
+</script>
+<div id='tableView'>
+	<table id='bookTable'>
+		<tr>
+			<TD>
+				<input type='checkbox' name='bookids'>
+			</TD>
+			<TD>
+				ID
+			</td>
+			<TD>
+				书籍名称
+			</TD>
+			<TD>
+				英文名称
+			</TD>
+			<TD>
+				ISBN
+			</TD>
+			<TD>
+				是否速递到首页
+			</TD>
+			<TD>
+				是否首页推荐
+			</TD>
+			<TD>
+				是否热门书籍
+			</TD>
+			<TD>
+				价格
+			</TD>
+			<TD>
+				是否库存
+			</TD>
+			<TD>
+				版本
+			</TD>
+			<TD>
+				库存数量
+			</TD>
+		</tr>
+	</table>
+	<%-include tab-table-bottom-bar%>
+</div>
+<%-include edit-panel-open%>
+<%-include edit-author-panel%>
+<script type="text/javascript" src="/javascripts/jquery-1.8.2.js"></script>
+<script type="text/javascript">
+	$.ajax({
+		type:"get",
+		url:'/support/listBooksAllByJson_bk',
+		data:{
+		},
+		datatype:'json',
+		success:function(result , state , req){
+			var totalCount = result.totalCount;
+			var items = result.items;
+			if($('#pageNo'))
+				$('#pageNo').val(Math.ceil(parseInt(totalCount) / 10));
+
+			for(var i = 0 ; i < items.length ; i ++)
+			{
+				var tr = $('<tr></tr>');
+				tr.append('<td><input type="checkbox" name="bookids"></td>');
+				var item = items[i];
+				for(var key in columns)
+				{
+					var td = $('<td></td>');
+					var value = '';
+					if(columns[key].render)
+						value = columns[key].render(item[key]);
+					else 
+						value = item[key];
+					td.html(value);
+					tr.append(td);
+				}
+				$('#bookTable').append(tr);
+			}
+		},
+		falture:function(result , state , req){
+		}
+	});
+</script>

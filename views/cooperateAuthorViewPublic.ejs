@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<%-include header%>
+<%-include indexSearch%>
+<%-include userReadStatus%>
+<style type="text/css">
+	.info-view-title{
+		height: 40px;
+		font-weight: bold;
+		font-size: 16px;
+		line-height: 40px;
+		color: #EE7600;
+		margin-top: 20px;
+	}
+	.container-info{
+		margin-top: 30px;
+		width: 100%;
+		text-indent:2em;
+		line-height:300%;
+	}
+</style>
+<div class="container">
+	<div class='row'>
+		<div class='span12'>
+			<div class='info-view-title'>
+				<%=tempAuthor.chinesename%>
+			</div>	
+			<%-partial('cooperateAuthorViewPublicTab',{tempAuthorId : tempAuthor._id , tab:'introduction'})%>
+			<div class='container-info'>
+				<%=tempAuthor.introduction%>
+			</div>
+			<%-include bottomBar%>	
+		</div>
+	</div>
+</div>

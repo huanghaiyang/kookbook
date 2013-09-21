@@ -1,0 +1,320 @@
+<!doctype html>
+<style type="text/css">
+	.user-bg{
+		background-color: rgb(245, 245, 245);
+		background-image: linear-gradient(rgb(255, 255, 255), rgb(230, 230, 230));
+		background-position: 0% 0%;
+		background-repeat: repeat-x;
+		border-bottom-color: rgb(179, 179, 179);
+		border-bottom-left-radius: 4px;
+		border-bottom-right-radius: 4px;
+		border-bottom-style: solid;
+		border-bottom-width: 1px;
+		border-image-outset: 0 0 0 0;
+		border-image-repeat: stretch stretch;
+		border-image-slice: 100% 100% 100% 100%;
+		border-image-source: none;
+		border-image-width: 1 1 1 1;
+		border-left-color: rgba(0, 0, 0, 0.1);
+		border-left-style: solid;
+		border-left-width: 1px;
+		border-right-color: rgba(0, 0, 0, 0.1);
+		border-right-style: solid;
+		border-right-width: 1px;
+		border-top-color: rgba(0, 0, 0, 0.1);
+		border-top-left-radius: 4px;
+		border-top-right-radius: 4px;
+		border-top-style: solid;
+		border-top-width: 1px;
+		box-shadow: rgba(255, 255, 255, 0.2) 0px 1px 0px 0px inset, rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
+		color: rgb(51, 51, 51);
+		cursor: pointer;
+		font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+		font-size: 14px;
+		line-height: 20px;
+		list-style-image: none;
+		list-style-position: outside;
+		list-style-type: none;
+		margin-bottom: 0px;
+		outline-color: rgb(0, 0, 0);
+		outline-style: none;
+		outline-width: 0px;
+		text-decoration: none;
+		text-shadow: rgba(255, 255, 255, 0.75) 0px 1px 1px;
+		transition-delay: 0s;
+		transition-duration: 0s;
+		transition-property: all;
+		transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
+		vertical-align: middle;
+		-moz-border-bottom-colors: none;
+		-moz-border-left-colors: none;
+		-moz-border-right-colors: none;
+		-moz-border-top-colors: none;
+		-moz-text-blink: none;
+		-moz-text-decoration-color: rgb(51, 51, 51);
+		-moz-text-decoration-line: none;
+		-moz-text-decoration-style: solid;
+	}
+	.user-control{
+		width: 100%;
+		height: auto;
+		display: inline-block;
+	}
+	.user-row{
+		width: 100%;
+		float: left;
+		margin-left: 0px;
+		line-height: 50px;
+		vertical-align: middle;
+		display:block;
+		padding-top:10px;
+		border-top: 1px solid #8C8C8C;
+		margin-bottom: 20px;
+	}
+	.user-avatar-bg{
+		height: 50px;
+		width: 50px;
+		margin-left: 0px;
+		border-radius: 1px;
+		display:block;
+		padding:2px; 
+	}
+	.user-avatar{
+		height: 100%;
+		width: 100%;
+	}
+	.user-info{
+		height: 100%;
+		width: 93%;
+		float: right;
+		display: block;
+		padding-top: 0px;
+		vertical-align: top;
+	}
+	.user-info-sig{
+		font-size: 14px;
+		text-overflow:ellipsis;
+		margin-top: 0px;
+		white-space:nowrap;
+		overflow: hidden;
+		color: #CD5555;
+		opacity: 0.9;
+		width: 50%;
+
+		height:30px;
+		line-height: 30px;
+		opacity: .8;
+	}
+	.user-info-sig:hover,.comment-title:hover{
+		text-decoration: underline;
+		cursor: pointer;
+		opacity: 1.0
+	}
+	.comment-title{
+		height: 20px;
+		line-height: 20px;
+		margin-top: 5px;
+		text-align: left;
+		font-size: 12px;
+		color: #EE6AA7;
+		opacity: .9;
+	}
+	.comment-content{
+		width: 93%;
+		float: right;
+		word-break:break-all;
+		line-height: 180%;
+		color:#595959;
+		margin-top: 5px;
+		margin-bottom: 5px;
+		letter-spacing: 0.2em;
+		text-indent: 2em;
+	}
+	.user-name{
+		width: 50px;
+		margin-top: 5px;
+		color:#C67171;
+		text-align: left;
+	}
+	.user-view{
+		width: 50px;
+		float: left;
+		line-height: 180%;
+	}
+	.comment-bottom-bar{
+		width: 93%;
+		float: right;
+		height: 20px;
+	}
+	.comment-func{
+		float: left;
+	}
+	.comment-func,.comment-func-right{
+		margin-right: 10px;
+		display: inline-block;
+		color: #BC8F8F;
+		height: 15px;
+		line-height: 15px;
+	}
+	.comment-func a{
+		color: #BC8F8F;
+		cursor: pointer;
+	}
+	.comment-func-right{
+		float: right;
+	}
+</style>
+<div class='user-control'>
+	<div class='user-row'>
+		<div class='user-view'>
+			<div class='user-avatar-bg user-bg'>
+				<img src="/images/bg1.jpg" class='user-avatar'>
+			</div>
+			<div class='user-name'>
+				我是周文王	
+			</div>
+		</div>
+		<div class='user-info'>
+			<div class='user-info-sig'>
+				播放技巧一：正常情况下的新片和热片，百度影音
+			</div>
+			<div class='comment-title'>
+				周文王
+			</div>
+		</div>
+		<div class='comment-content'>
+			播放技巧一：正常情况下的新片和热片，百度影音都能保持非常流畅的播放；如有出现不流畅，您可以选择暂停缓冲一会再观看，或是检查一下自己电脑是否开启了其他占用网速的软件。（百度影音是一个P2P的播放软件，用户越多速度越快，所以部分老片冷片会速度较慢，用户数增加后这个问题会很快解决）
+播放技巧二：页面播放的东西，会在本地存一份，具体可在“播放器设置”-“下载面板”中可以查看和设置缓冲文件目录。在下载过程中若硬盘空间不足，百度影音会弹出提示窗口。只需重新设置缓冲目录或者删除旧缓冲文件即可。
+		</div>
+		<div class='comment-bottom-bar'>
+			<div class='comment-func'>
+				35分钟前
+			</div>
+			<div class='comment-func'>
+				<a><i class='icon-share-alt'></i>回复</a>
+			</div>
+			<div class='comment-func'>
+				<a><i class='icon-heart'></i>顶</a>
+			</div>
+		</div>
+		<div class='comment-bottom-bar'>
+			<div class='comment-func-right'>
+				已有<font color='#000000'>18</font>人顶过
+			</div>
+		</div>
+	</div>
+	<div class='user-row'>
+		<div class='user-view'>
+			<div class='user-avatar-bg user-bg'>
+				<img src="/images/bg1.jpg" class='user-avatar'>
+			</div>
+			<div class='user-name'>
+				我是周文王	
+			</div>
+		</div>
+		<div class='user-info'>
+			<div class='user-info-sig'>
+				播放技巧一：正常情况下的新片和热片，百度影音
+			</div>
+			<div class='comment-title'>
+				周文王
+			</div>
+		</div>
+		<div class='comment-content'>
+			播放技巧一：正常情况下的新片和热片，百度影音都能保持非常流畅的播放；如有出现不流畅，您可以选择暂停缓冲一会再观看，或是检查一下自己电脑是否开启了其他占用网速的软件。（百度影音是一个P2P的播放软件，用户越多速度越快，所以部分老片冷片会速度较慢，用户数增加后这个问题会很快解决）
+播放技巧二：页面播放的东西，会在本地存一份，具体可在“播放器设置”-“下载面板”中可以查看和设置缓冲文件目录。在下载过程中若硬盘空间不足，百度影音会弹出提示窗口。只需重新设置缓冲目录或者删除旧缓冲文件即可。
+		</div>
+		<div class='comment-bottom-bar'>
+			<div class='comment-func'>
+				35分钟前
+			</div>
+			<div class='comment-func'>
+				<a><i class='icon-share-alt'></i>回复</a>
+			</div>
+			<div class='comment-func'>
+				<a><i class='icon-heart'></i>顶</a>
+			</div>
+		</div>
+		<div class='comment-bottom-bar'>
+			<div class='comment-func-right'>
+				已有<font color='#000000'>18</font>人顶过
+			</div>
+		</div>
+	</div>
+	<div class='user-row'>
+		<div class='user-view'>
+			<div class='user-avatar-bg user-bg'>
+				<img src="/images/bg1.jpg" class='user-avatar'>
+			</div>
+			<div class='user-name'>
+				我是周文王	
+			</div>
+		</div>
+		<div class='user-info'>
+			<div class='user-info-sig'>
+				播放技巧一：正常情况下的新片和热片，百度影音
+			</div>
+			<div class='comment-title'>
+				周文王
+			</div>
+		</div>
+		<div class='comment-content'>
+			播放技巧一：正常情况下的新片和热片，百度影音都能保持非常流畅的播放；如有出现不流畅，您可以选择暂停缓冲一会再观看，或是检查一下自己电脑是否开启了其他占用网速的软件。（百度影音是一个P2P的播放软件，用户越多速度越快，所以部分老片冷片会速度较慢，用户数增加后这个问题会很快解决）
+播放技巧二：页面播放的东西，会在本地存一份，具体可在“播放器设置”-“下载面板”中可以查看和设置缓冲文件目录。在下载过程中若硬盘空间不足，百度影音会弹出提示窗口。只需重新设置缓冲目录或者删除旧缓冲文件即可。
+		</div>
+		<div class='comment-bottom-bar'>
+			<div class='comment-func'>
+				35分钟前
+			</div>
+			<div class='comment-func'>
+				<a><i class='icon-share-alt'></i>回复</a>
+			</div>
+			<div class='comment-func'>
+				<a><i class='icon-heart'></i>顶</a>
+			</div>
+		</div>
+		<div class='comment-bottom-bar'>
+			<div class='comment-func-right'>
+				已有<font color='#000000'>18</font>人顶过
+			</div>
+		</div>
+	</div>
+	<div class='user-row'>
+		<div class='user-view'>
+			<div class='user-avatar-bg user-bg'>
+				<img src="/images/bg1.jpg" class='user-avatar'>
+			</div>
+			<div class='user-name'>
+				我是周文王	
+			</div>
+		</div>
+		<div class='user-info'>
+			<div class='user-info-sig'>
+				播放技巧一：正常情况下的新片和热片，百度影音
+			</div>
+			<div class='comment-title'>
+				周文王
+			</div>
+		</div>
+		<div class='comment-content'>
+			播放技巧一：正常情况下的新片和热片，百度影音都能保持非常流畅的播放；如有出现不流畅，您可以选择暂停缓冲一会再观看，或是检查一下自己电脑是否开启了其他占用网速的软件。（百度影音是一个P2P的播放软件，用户越多速度越快，所以部分老片冷片会速度较慢，用户数增加后这个问题会很快解决）
+播放技巧二：页面播放的东西，会在本地存一份，具体可在“播放器设置”-“下载面板”中可以查看和设置缓冲文件目录。在下载过程中若硬盘空间不足，百度影音会弹出提示窗口。只需重新设置缓冲目录或者删除旧缓冲文件即可。
+		</div>
+		<div class='comment-bottom-bar'>
+			<div class='comment-func'>
+				35分钟前
+			</div>
+			<div class='comment-func'>
+				<a><i class='icon-share-alt'></i>回复</a>
+			</div>
+			<div class='comment-func'>
+				<a><i class='icon-heart'></i>顶</a>
+			</div>
+		</div>
+		<div class='comment-bottom-bar'>
+			<div class='comment-func-right'>
+				已有<font color='#000000'>18</font>人顶过
+			</div>
+		</div>
+	</div>
+</div>

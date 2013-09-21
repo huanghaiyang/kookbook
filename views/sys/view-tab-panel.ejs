@@ -1,0 +1,44 @@
+<!doctype html>
+<style type="text/css">
+	.tab-panel{
+		position: absolute;
+		top: 32px;
+		left:2px;
+		right: 2px;
+		bottom: 2px;
+		border:1px solid #A0522D;
+		background-color: #FFFFFF;
+	}
+</style>
+<script type="text/javascript">
+	(function(){
+		$.fn.tabPanelFactory = function(options){
+			var $t = $(this);
+			var defaults = {};
+			var $opts = $.extend({} , defaults , options);
+			var Util = {
+				begin:100,
+				zIndexAsc : function(){
+					this.begin += 10;
+					return this.begin;
+				}
+			};
+			TabPanelFactory = function(){};
+			TabPanelFactory.newTabPanel = function(id){
+				var panel = $('<div class="tab-panel"><iframe style="height:100%;width:100%;border:none;"></iframe></div>');
+				if(id)
+				{
+					panel.children('iframe').attr({
+						id:'panel_' + id
+					});
+					panel.css({
+						'zIndex' : Util.zIndexAsc()
+					});
+				}
+				$t.append(panel);
+				return panel.children('iframe');
+			}
+			return TabPanelFactory;
+		};
+	})(jQuery);	
+</script>

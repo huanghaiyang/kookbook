@@ -1,0 +1,28 @@
+.lt-board,.lt-de{
+	-webkit-border-radius:3px 3px 3px 3px ;
+	-moz-border-radius:3px 3px 3px 3px ;
+	-o-border-radius:3px 3px 3px 3px ;
+	border-radius:3px 3px 3px 3px ;
+	font-size: 20px;
+	text-align: center;
+	font-weight: bold;
+	display: block;
+	float:right;
+	margin-right: 5px;
+	height:40px;
+}
+.lt-board{
+	width: 40px;
+	line-height: 40px;
+	background-color: #FF8C00;
+	color:#ffffff;
+	text-shadow:0 -1px 0 rgba(0,0,0,0.4);
+	box-shadow: 2px 2px 2px #CDC9C9;
+}
+.lt-de{
+	width:30px;
+	vertical-align: bottom;
+	line-height: 70px;
+	background-color: #FFFFFF;
+	color: #000000;
+}

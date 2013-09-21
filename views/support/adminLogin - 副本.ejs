@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title><%= title%> -KookBook-后台管理员登录</title>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+		<script type="text/javascript" src="/ext-4.2.1.883/ext-all-debug.js"></script>
+		<link rel="stylesheet" type="text/css" href="/ext-4.2.1.883/resources/css/ext-all-debug.css">
+		<script type="text/javascript">
+			Ext.Loader.setConfig({
+               enabled: true
+           });
+           Ext.Loader.setPath('Ext.ux', '/ext-4.2.1.883/examples/ux');
+
+           Ext.require([
+               //'Ext.form.*',
+               //'Ext.layout.container.Column',
+               //'Ext.tab.Panel'
+               '*',
+               'Ext.ux.DataTip'
+           ]);
+
+           Ext.onReady(function() {
+               Ext.QuickTips.init();
+               var required = '<span style="color:red;font-weight:bold" data-qtip="Required">*</span>';
+
+               var win = Ext.create('widget.window', {
+                 title: '管理员登录',
+                 header: {
+                     titlePosition: 2,
+                     titleAlign: 'center'
+                 },
+                 width: 350,
+                 minWidth: 350,
+                 closable: false,
+                 items: [{
+                         xtype: 'form',
+                         layout: 'form',
+                         collapsible: false,
+                         collapse: false,
+                         id: 'simpleForm',
+                         url: '/support/adminLogin',
+                         frame: true,
+                         bodyPadding: '0',
+                         width: 340,
+                         border:false,
+                         fieldDefaults: {
+                             msgTarget: 'side',
+                             labelWidth: 55
+                         },
+                         plugins: {
+                             ptype: 'datatip'
+                         },
+                         defaultType: 'textfield',
+                         items: [{
+                             fieldLabel: '用户名',
+                             afterLabelTextTpl: required,
+                             name: 'adminname',
+                             allowBlank: false,
+                             tooltip: '请输入管理员名称' , 
+                             width:240
+                         },{
+                             fieldLabel: '密码',
+                             afterLabelTextTpl: required,
+                             name: 'password',
+                             allowBlank: false,
+                             tooltip: '请输入管理员密码' ,
+                             inputType : "password"
+                         }],
+
+                         buttons: [{
+                             text: '登录',
+                             handler: function() {
+                                 if(this.up('form').getForm().isValid())
+                                 {
+                                    this.up('form').getForm().submit({
+                                       waitMsg: '正在登入',
+                                       waitTitle: '提示',
+                                       url: '/support/adminLogin',
+                                       method: 'post',
+                                       success: function(form , action) {
+                                          if(action.result.error)
+                                          {
+                                            Ext.MessageBox.alert(action.result.error) ;
+                                            return ;
+                                          }
+                                          else if(action.result.success == 'true')
+                                            window.location = "/support/index" ; 
+                                       },
+                                       failure: function(form ,action) {
+                                          Ext.MessageBox.alert(action.result.error) ;
+                                       }
+                                    }
+                                 );
+                             }
+                           }
+                         }]
+                     }]
+             }).show();
+           });
+   		</script>
+	</head>
+	<body>
+	</body>
+</html>

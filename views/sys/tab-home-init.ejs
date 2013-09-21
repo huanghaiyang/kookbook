@@ -1,0 +1,8 @@
+<!doctype html>
+<script type="text/javascript">
+	var TabFactory = $('#tabUl').tabFactory();
+	var homeTab = TabFactory.newTab('home' , '首页');
+	var TabPanelFactory = $('#viewPage').tabPanelFactory();
+	var homeTabPanel = TabPanelFactory.newTabPanel('home');
+	homeTabPanel.attr('src' , '/sys/tab-home-page');
+</script>

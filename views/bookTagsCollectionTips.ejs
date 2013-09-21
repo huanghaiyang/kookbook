@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<style type="text/css">
+	.tags-tips{
+		width: 100%;
+		height:30px;
+		line-height: 30px;
+		font-size: 12px;
+		text-align: center;
+		background-color: #1C86EE;
+		color: #FFFFFF;
+		margin-bottom: 10px;
+		opacity: 0.8;
+		margin-top: 0px;
+	}
+	.tags-tips:hover{
+		opacity: 0.9;
+	}
+	.tags-tips-alert{
+		margin-left: 10px;
+		cursor:pointer;
+	}
+	.tags-tips-alert:hover{
+		text-decoration:underline;
+	}
+</style>
+<div class='tags-tips'>
+	提示：您可以对标签进行收藏哦!<span class='tags-tips-alert'>知道了</span>
+</div>
+<script type="text/javascript">
+	$('.tags-tips-alert').click(function(){
+		$('.tags-tips').animate({
+			'height' :'2px'
+		},200);
+	});
+</script>

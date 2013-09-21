@@ -1,0 +1,98 @@
+<!doctype html>
+<link rel="stylesheet" type="text/css" href="/javascripts/sys/treeview/jquery.treeview.css">
+<script type="text/javascript" src='/javascripts/sys/treeview/jquery.treeview.js'></script>
+<style type="text/css">
+	.nav-bar{
+		position: absolute;
+		top:32px;
+		bottom:32px;
+		width:300px;
+		background-color: #E0EEEE;
+		border-left: 2px solid #D1EEEE;
+		box-shadow: 2px 2px 2px #BCD2EE;
+	}
+	.nav-title{
+		width: 100%;
+		position: relative;
+		text-align: left;
+		background-color: #CD8500;
+		height: 25px;
+		line-height: 25px;
+	}
+	.nav-title-text{
+		float: left;
+		height: 25px;
+		line-height: 25px;
+		margin-left: 20px;
+		color: #FFFFFF;
+	}
+	.nav-title-more{
+		float: right;
+		height: 25px;
+		line-height: 25px;
+		margin-right: 10px;
+		color: #FFFFFF;
+	}
+	.nav-title-more:hover{
+		text-decoration: underline;
+		opacity: .9;
+		cursor: pointer;
+	}
+	.nav-tree{
+		margin-top: 0px;
+		width: 100%;
+		position: absolute;
+		top: 25px;
+		bottom: 0px;
+		background-color: #FFFFFF;
+		overflow: auto;
+	}
+</style>
+<div class='nav-bar' id='navBar'>
+	<div class='nav-title'>
+		<span class='nav-title-text'>
+			导航菜单
+		</span>
+		<span class='nav-title-more' title='点击收缩导航面板' id='navMore'>
+			<<
+		</span>
+	</div>
+	<div class='nav-tree'>
+		<ul id="navigation" class="treeview">
+		</ul>		
+	</div>
+</div>
+<script type="text/javascript">
+	$(document).ready(
+		function(){
+			var i = 0 ;
+			$('#navMore').click(function(){
+				if(i === 0){
+					$('#navBar').animate({
+						'left':'-270px'
+					},300,function(){
+						$('#navMore').html('>>');
+						$('#navMore').attr('title','点击展开导航面板');
+						i = 1;
+					});
+					$('#viewPage').animate({
+						'left' : '34px'
+					},300);
+				}
+				else if(i === 1){
+					$('#navBar').animate({
+						'left':'0px'
+					},300,function(){
+						$('#navMore').html('<<');
+						$('#navMore').attr('title','点击收缩导航面板');
+						i = 0;
+					});
+					$('#viewPage').animate({
+						'left' : '304px'
+					},300);
+				}
+			});
+		}
+	); 
+</script>
+<%-include nav-init%>

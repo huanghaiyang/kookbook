@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<%-include header%>
+<%-include indexSearch%>
+<%-include userReadStatus%>
+<link rel="stylesheet" type="text/css" href="/stylesheets/cooperateAuthors.css">
+<div class="container">
+	<div class='row'>
+		<div class='span12 span12_edit'>
+			<%-include cooperateAuthorsTab%>
+			<div class='editMain editMain1' id='editMainDiv'>
+				 <div class='editCols' id='editColsDiv'>
+				 	<%-partial('cooperateSomethingTips',{edit:true})%>
+				 	<form class="form-horizontal" id='editForm' method="post" action="/cooperation/editOneAuthor">
+				 		<%if(tempAuthor){%><%-partial('cooperateSubmitOptions',{publicStatus:tempAuthor.publicStatus,submitStatus:tempAuthor.submitStatus})%><%}else{%>
+				 			<%-partial('cooperateSubmitOptions',{publicStatus:0,submitStatus:0})%>
+				 		<%}%>
+						<fieldset id="form_field">
+							<%if(tempAuthor){
+								%>
+								<div class="control-group">
+									<div class="control-label" for="chinesename">中文名:</div>
+									<div class="controls">
+										<input type="text" class="span2" id="chinesename" name="chinesename" placeholder='填写中文名称' value='<%=tempAuthor.chinesename%>'>
+									</div>
+								</div>
+							 	<div class="control-group">
+									<div class="control-label" for="englishname">英文名:</div>
+									<div class="controls">
+										<input type="text" class="span2" id="englishname" name="englishname" placeholder='填写英文名称' value='<%=tempAuthor.englishname%>'>
+									</div>
+								</div>
+								<div class="control-group">
+									<div class="control-label" for="pencilnames">笔名或曾用名:</div>
+									<div class="controls">
+										<%
+											if(tempAuthor.pencilnames.length > 0){
+												%>
+												<input type="text" class="span2" id="pencilnames" name="pencilnames" placeholder='填写笔名或曾用名' value='<%=tempAuthor.pencilnames[0]%>'>
+												<%
+											}
+											else
+											{
+												%>
+												<input type="text" class="span2" id="pencilnames" name="pencilnames" placeholder='填写笔名或曾用名'>
+												<%
+											}
+										%>
+										<%
+											if(tempAuthor.pencilnames.length > 1){
+												for(var i = 1 ; i < tempAuthor.pencilnames.length ; i++){
+													%>
+													<input type="text" class="input-small" id="pencilnames<%=i%>" name="pencilnames" placeholder='填写笔名或曾用名' value='<%=tempAuthor.pencilnames[i]%>'>
+													<p class="help-inline add_name_ico1" title="删除前方的填写项" data-del="<%=i%>" name='pencilnamesDel'>-</p>
+													<%
+												}
+											}
+										%>
+										<%
+											if(tempAuthor.pencilnames.length > 4){
+												%>
+												<p class="help-inline add_pname_tip"><font color="#D52100">!</font>已不能再添加笔名填写项</p>
+												<%
+											}
+										%>
+										<p class="help-inline add_name_ico" title='添加添加一个笔名&中间名' id='addPNameIco' data-status='none'>+</p>
+									</div>
+								</div>
+								<div class="control-group">
+									<div class="control-label" for="sex">性别:</div>
+									<div class="controls">
+										<%if(tempAuthor.sex == 1){%>
+											<label class="radio inline">
+											  <input type="radio" name='sex' id="sex1" value="1" checked> 男
+											</label>
+											<label class="radio inline">
+											  <input type="radio" name='sex' id="sex2" value="0"> 女
+											</label>
+										<%}else{%>
+											<label class="radio inline">
+											  <input type="radio" name='sex' id="sex1" value="1"> 男
+											</label>
+											<label class="radio inline">
+											  <input type="radio" name='sex' id="sex2" value="0" checked> 女
+											</label>
+										<%}%>
+									</div>
+								</div>
+								<div class="control-group">
+									<div class="control-label" for="country">国籍:</div>
+									<div class="controls">
+											<%if(tempAuthor.address.province){%>
+											<input type="text" class="span2" id='country' name='country' placeholder='请选择国籍' value='<%=tempAuthor.address.country%>' data-add-addafter='true'>
+											<span style="margin-left:4px;">州&省:</span>
+											<input type="text" class="input-small addMargin" id="province" name="province" data-add-addAfter="false" value='<%=tempAuthor.address.province%>'>
+										<%}else{
+											%>
+											<input type="text" class="span2" id='country' name='country' data-add-addAfter="false" placeholder='请选择国籍' value='<%=tempAuthor.address.country%>'>
+											<span style="margin-left:4px;">州&省:</span>
+											<%
+										}%>
+									</div>
+								</div>
+								<div class="control-group">
+									<div class="control-label" for="race">民族:</div>
+									<div class="controls">
+										<input type="text" class="span2" id='race' name='race' placeholder='请填写名族信息' value='<%=tempAuthor.race%>'>
+									</div>
+								</div>
+								<div class="control-group">
+									<div class="control-label" for="address_birth">出生地:</div>
+									<div class="controls">
+										<input type="text" class="span2" id='address_birth' name='address_birth' placeholder='请填写出生地' value='<%=tempAuthor.address_birth%>'>
+									</div>
+								</div>
+								<div class="control-group">
+									<div class="control-label" for="birthday">出生日期:</div>
+									<div class="controls">
+										<%
+											var birthday='';
+											if(tempAuthor.birthday){
+												var d = new Date(tempAuthor.birthday) ;
+												var month = '' ; 
+												if(d.getMonth() + 1 < 10)
+													month = '0' + (d.getMonth() + 1) ; 
+												else
+													month = d.getMonth() + 1 ; 
+												var day = '' ; 
+												if(d.getUTCDate() < 10)
+													day = '0' + d.getUTCDate() ; 
+												else
+													day = d.getUTCDate() ;
+												birthday = d.getFullYear() + '-' + month + '-' +  day ; 
+											}
+										%>
+										<input type="text" class="span2" id='birthday' name='birthday' placeholder='请选择出生日期' value='<%=birthday%>'>
+									</div>
+								</div>
+								<div class="control-group">
+									<div class="control-label" for="job">职业:</div>
+									<div class="controls">
+										<input type="text" class="span2" id='job' name='job' placeholder='请填写职业信息' value='<%=tempAuthor.job%>'>
+									</div>
+								</div>
+								<div class="control-group">
+									<div class="control-label" for="graduateSchool">毕业院校:</div>
+									<div class="controls">
+										<input type="text" class="span2" id='graduateSchool' name='graduateSchool' placeholder='请填写毕业院校' value='<%=tempAuthor.graduateSchool%>'>
+									</div>
+								</div>
+								<div class="control-group">
+									<div class="control-label" for="worth">成就&奖项:</div>
+									<div class="controls">
+										<input type="text" class="span2" id='worth' name='worth' placeholder='请添加奖项'>
+										<p class="help-inline add_name_ico" title='添加添加一个成就' id='addWorthIco' data-status='none'>+</p>
+									</div>
+								</div>
+								<div class="control-group">
+									<div class="control-label" for="introduction">个人履历:</div>
+									<div class="controls">
+										<textarea id='introduction' name='introduction' placeholder='请添加简单介绍'><%=tempAuthor.introduction%></textarea>
+									</div>
+								</div>
+								<%
+							}else{
+								%>
+								<div class="control-group">
+									<div class="control-label" for="chinesename">中文名:</div>
+									<div class="controls">
+										<input type="text" class="span2" id="chinesename" name="chinesename" placeholder='填写中文名称'>
+									</div>
+								</div>
+							 	<div class="control-group">
+									<div class="control-label" for="englishname">英文名:</div>
+									<div class="controls">
+										<input type="text" class="span2" id="englishname" name="englishname" placeholder='填写英文名称'>
+									</div>
+								</div>
+								<div class="control-group">
+									<div class="control-label" for="pencilnames">笔名或曾用名:</div>
+									<div class="controls">
+										<input type="text" class="span2" id="pencilnames" name="pencilnames" placeholder='填写笔名或曾用名'>
+										<p class="help-inline add_name_ico" title='添加添加一个笔名&中间名' id='addPNameIco' data-status='none'>+</p>
+									</div>
+								</div>
+								<div class="control-group">
+									<div class="control-label" for="sex">性别:</div>
+									<div class="controls">
+										<label class="radio inline">
+										  <input type="radio" name='sex' id="sex1" value="1"> 男
+										</label>
+										<label class="radio inline">
+										  <input type="radio" name='sex' id="sex2" value="0"> 女
+										</label>
+									</div>
+								</div>
+								<div class="control-group">
+									<div class="control-label" for="country">国籍:</div>
+									<div class="controls">
+										<input type="text" class="span2" id='country' name='country' data-add-addAfter="false" placeholder='请选择国籍'>
+									</div>
+								</div>
+								<div class="control-group">
+									<div class="control-label" for="race">民族:</div>
+									<div class="controls">
+										<input type="text" class="span2" id='race' name='race' placeholder='请填写名族信息'>
+									</div>
+								</div>
+								<div class="control-group">
+									<div class="control-label" for="address_birth">出生地:</div>
+									<div class="controls">
+										<input type="text" class="span2" id='address_birth' name='address_birth' placeholder='请填写出生地'>
+									</div>
+								</div>
+								<div class="control-group">
+									<div class="control-label" for="birthday">出生日期:</div>
+									<div class="controls">
+										<input type="text" class="span2" id='birthday' name='birthday' placeholder='请选择出生日期'>
+									</div>
+								</div>
+								<div class="control-group">
+									<div class="control-label" for="job">职业:</div>
+									<div class="controls">
+										<input type="text" class="span2" id='job' name='job' placeholder='请填写职业信息'>
+									</div>
+								</div>
+								<div class="control-group">
+									<div class="control-label" for="graduateSchool">毕业院校:</div>
+									<div class="controls">
+										<input type="text" class="span2" id='graduateSchool' name='graduateSchool' placeholder='请填写毕业院校'>
+									</div>
+								</div>
+								<div class="control-group">
+									<div class="control-label" for="worth">成就&奖项:</div>
+									<div class="controls">
+										<input type="text" class="span2" id='worth' name='worth' placeholder='请添加奖项'>
+										<p class="help-inline add_name_ico" title='添加添加一个成就' id='addWorthIco' data-status='none'>+</p>
+									</div>
+								</div>
+								<div class="control-group">
+									<div class="control-label" for="introduction">个人履历:</div>
+									<div class="controls">
+										<textarea id='introduction' name='introduction' placeholder='请添加简单介绍'></textarea>
+									</div>
+								</div>
+								<%
+							}%>
+							<div class="form-actions">
+								<button class="btn btn-primary" type="submit">修改</button>
+								<button class="btn btn-primary" onclick='javascript:alert(1);'>重置</button>
+							</div>
+						</fieldset>
+					</form>
+					<a id='countryAhref' href='#countrySelectorDiv'></a>
+					<div style='display:none;'>
+						<div class='countrySelector' id='countrySelectorDiv'>
+							<div class='countrySelectorTopBar'>
+								<span style='margin-left:5px;'>国籍选择</span>
+								<span class='countrySelectorCloseBtn' id='countrySelectorCloseBtn'>
+									x
+								</span>
+								<div class='countrySelectorMain'>
+									<div class='countrySelectorRow'>
+										<div class='margin-right:0px;float:right;width:85%;display:block;'>
+											<span class='countryName'>
+												中国
+											</span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				 </div>
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript" src='/javascripts/fancybox/jquery.fancybox-1.3.4.js'></script>
+<script type="text/javascript" src='/javascripts/cooperateAuthor.js'></script>
+<link rel="stylesheet" href="/javascripts/fancybox/jquery.fancybox-1.3.4.css" type='text/css'>
+<%
+	if(tempAuthor){
+		var d = new Date(tempAuthor.birthday) ; 
+		%>
+		<%-partial('editAndAddTempAuthorCanlender',{year : d.getFullYear() , month : d.getMonth() + 1 , day : d.getUTCDate() , inputRender : 'birthday',editable:true})%>
+		<%
+	}
+%>

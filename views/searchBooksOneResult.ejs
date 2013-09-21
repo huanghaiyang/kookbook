@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<style type="text/css">
+	a{
+		cursor:pointer;
+	}
+</style>
+<div style='width:100%;height:150px;text-align:left;vertical-align:top;padding-top:10px;border-top:1px dashed #E5E5E5;'>
+	<div style='width:100px;float:left;'>
+		<a href='/book/<%=book._id%>'><img style='width:100%;' src='<%=book.images[0].url + unescape(book.images[0].filename)%>'></a>
+	</div>
+	<div style='float:left;margin-left:5px;width:500px;'>
+		<span style='width:100%;display:block;'><a href='/book/<%=book._id%>'><%=book.name ? book.name :''%><%=book.ename ? '(' + book.ename +')':''%></a></span>
+		<span style='width:100%;display:block;'>
+			作者:<%if(book.authors.length > 0){
+				for(var i = 0 ; i < book.authors.length ; i ++)
+				{
+					var author = book.authors[i];
+					%>
+					<%=author.address.country ? '[' + author + ']' :''%>
+					<a href='/author/<%=author._id%>'>
+						<%=author.name%>
+						<%
+						if(author.secName)
+						{
+							%>
+							<%='('+author.secName+')'%>
+							<%
+						}
+						%>
+					</a>
+					<%if(book.authors.length > 1 && i != book.authors.length-1){%>&nbsp;<%}%>
+					<%
+				}
+			}%>
+			/出版社:
+			<%if(book.publicCompany.length > 0){
+				for(var i = 0 ; i < book.publicCompany.length ; i ++)
+				{
+					var publicCompany = book.publicCompany[i];
+					%>
+					<a href='/publicCompany/<%=publicCompany._id%>'><%=publicCompany.name%></a>
+					<%if(book.publicCompany.length > 1 && i != book.publicCompany.length-1){%>&nbsp;<%}%>
+					<%
+				}
+			}%>
+			/
+			<%if(book.publicDate){%>
+			<%
+			var publicDate = new Date(book.publicDate) ;
+			%>
+			<%=publicDate.getFullYear() + '-' + (publicDate.getMonth() + 1) + '-' + (publicDate.getUTCDate() + 1)%>
+			<%
+			%>
+			/
+			<%}%>
+			<%=book.price ? book.price +'元':''%>
+			<%- partial('bookStar',{star : book.star})%>
+		</span>
+	</div>
+</div>

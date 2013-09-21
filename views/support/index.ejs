@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+     <head>
+          <title><%= title%> -KookBook-后台管理</title>
+          <meta charset="UTF-8" />
+          <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <script type="text/javascript" src="/ext-4.2.1.883/ext-all-debug.js"></script>
+          <link rel="stylesheet" type="text/css" href="/ext-4.2.1.883/resources/css/ext-all-debug.css">
+          <script type="text/javascript" src="/ext_support/app.js"></script>
+          <script type="text/javascript" src="/ext_support/index.js"></script>
+          <style type="text/css">
+            #href_back:hover{
+              font-weight:bold;
+            }
+          </style>
+     </head>
+     <body>
+      <div id="north" style="margin-top:-10px;">
+               <h3 style="float:left;">KookBook后台管理系统</h3>
+               <p style="float:right;margin-right:10px;">欢迎您:<%if(admin){%><%=admin.name%><%}%></p>
+          </div>
+     </body>
+</html>

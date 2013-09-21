@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<style type="text/css">
+.cookieWarningBox{
+	z-index: 999;
+	height:60px;
+	line-height: 60px;
+	border-top: 1px solid #e4e4e4;
+	vertical-align: middle;
+	text-align: center;
+	display: block;
+	font-size: 12px;
+	bottom:0px;
+	left:0px;
+	width: 100%;
+	position: fixed;
+	opacity: 0.9;
+	background-color: #FFFFFF;
+	display: none;
+}
+.cookieIntro{
+	width:530px;
+	display: block;
+	float: left;
+	color: #000000;
+}
+.closeCookie{
+	height:40px;
+	line-height: 40px;
+	margin-left: 60px;
+	margin-top: 10px;
+	width:100px;
+	display: block;
+	float: left;
+}
+.closeCookie a{
+	font-size: 14px;
+	color: #FFFFFF;
+	font-weight: bold;
+	text-decoration: none;
+}
+.privacyCookie a{
+	color: #000000;
+}
+.privacyCookie{
+	margin-left: 30px;
+	width: 100px;
+	display: block;
+	float: left;
+}
+.cookieOuter{
+	display: inline-block;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.closeCookie {
+    background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #1C86EE), color-stop(1, #1E90FF));
+    background:-moz-linear-gradient(top, #1C86EE 5%, #1E90FF 100%);
+    background:-webkit-linear-gradient(top, #1C86EE 5%, #1E90FF 100%);
+    background:-o-linear-gradient(top, #1C86EE 5%, #1E90FF 100%);
+    background:-ms-linear-gradient(top, #1C86EE 5%, #1E90FF 100%);
+    background:linear-gradient(to bottom, #1C86EE 5%, #1E90FF 100%);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#1C86EE', endColorstr='#1E90FF',GradientType=0);
+    
+    background-color:#1C86EE;
+    
+    display:inline-block;
+    color:#ffffff;
+    font-family:arial;
+    font-size:13px;
+    font-weight:bold;
+    text-decoration:none;
+    
+}
+.closeCookie:hover {
+    
+    background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #1E90FF), color-stop(1, #1C86EE));
+    background:-moz-linear-gradient(top, #1E90FF 5%, #1C86EE 100%);
+    background:-webkit-linear-gradient(top, #1E90FF 5%, #1C86EE 100%);
+    background:-o-linear-gradient(top, #1E90FF 5%, #1C86EE 100%);
+    background:-ms-linear-gradient(top, #1E90FF 5%, #1C86EE 100%);
+    background:linear-gradient(to bottom, #1E90FF 5%, #1C86EE 100%);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#1E90FF', endColorstr='#1C86EE',GradientType=0);
+    
+    background-color:#1E90FF;
+}
+.closeCookie:active {
+    position:relative;
+    top:1px;
+}
+</style>
+	<div class="cookieWarningBox">
+		<div class='cookieOuter'> 
+			<div class="cookieIntro">
+				kookbook希望您能够允许网站访问您的cookie信息，让您有更好的浏览体验
+			</div>
+			<div class="closeCookie" id='cookiePermit'>
+				<a href="javascript:void(0);">
+					允&nbsp;&nbsp;&nbsp;许
+				</a>
+			</div>
+			<div class="closeCookie" id='cookieRefuse'>
+				<a href="javascript:void(0);">
+					拒&nbsp;&nbsp;&nbsp;绝
+				</a>
+			</div>
+			<div class="privacyCookie">
+				<a href="/viewPrivacyCookie">
+					详细信息
+				</a>
+			</div>
+		</div>
+	</div>
+<script type="text/javascript">
+	$(document).ready(function(){
+		if(window.localStorage){
+			if(window.localStorage.allowCookies === undefined)
+				$('.cookieWarningBox').show();
+		}
+		var hideAll = function(){
+			setTimeout(function(){
+				$('.cookieWarningBox').animate({
+					'height' :'0px'
+				},{
+			      queue: false,
+			      duration: 1000,
+			      easing: 'easeOutBounce'
+			    },function(){
+					$('.cookieWarningBox').remove();
+				});
+			},500);
+		};
+		$('#cookiePermit').click(function(){
+			if(window.localStorage){
+				window.localStorage.allowCookies = true;
+			}
+			$(this).children('a').text('允许使用cookie');
+			hideAll();
+		});
+		$('#cookieRefuse').click(function(){
+			if(window.localStorage){
+				window.localStorage.allowCookies = false;
+			}
+			$(this).children('a').text('拒绝使用cookie');
+			hideAll();
+		});
+	});
+</script>

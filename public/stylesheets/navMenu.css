@@ -1,0 +1,84 @@
+.one-nav-title-text{
+	margin-left: 10px;
+}
+.one-nav-title-more{
+	float:right;
+	margin-right: 10px;
+	font-size:14px;
+	font-weight: bold;
+	font-family:"幼圆";
+
+	-moz-transition:all 0.4s ease 0s;
+	-webkit-transition:all 0.4s ease 0s;
+	transition:all 0.4s ease 0s;
+
+	display: block;
+	text-align: center;
+	vertical-align: middle;
+}
+.nav-i .one-nav-title-more{
+	height:28px;
+	margin-top: 11px;
+	width:28px;
+	line-height: 28px;
+}
+.nav-i{
+	display: block;
+	width:100%;
+	-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=80)"; /* ie8  */
+    filter:alpha(opacity=80);    /* ie5-7  */
+    -moz-opacity:0.8;    /* old mozilla browser like netscape  */
+    -khtml-opacity: 0.8;    /* for really really old safari */ 
+    opacity: 0.8;
+    vertical-align: middle;
+    box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.1) inset;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+	color:#ffffff;
+	text-shadow:0 -1px 0 rgba(0,0,0,0.2);
+}
+.nav-i{
+	 background:#2EB1B6;
+	 font-size:14px;
+	 line-height: 50px;
+	 height:50px;
+	 cursor: pointer;
+}
+.nav-active{
+	-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=100)"; /* ie8  */
+    filter:alpha(opacity=100);    /* ie5-7  */
+    -moz-opacity:1;    /* old mozilla browser like netscape  */
+    -khtml-opacity: 1;    /* for really really old safari */ 
+    opacity: 1;
+
+    text-decoration: underline;
+    cursor: pointer;
+}
+.rotate-down{
+	-webkit-transform: rotate(90deg);  
+	-moz-transform: rotate(90deg);  
+	transform:rotate(90deg); 
+}
+.nav-ii{
+    background:#FF6699;
+	font-size:12px;
+	line-height: 40px;
+	height:40px;
+}
+.nav-ii .one-nav-title-text{
+	margin-left: 20px;
+}
+.nav-ii .one-nav-title-more{
+	margin-right: 20px;
+	height:24px;
+	margin-top: 8px;
+	width:24px;
+	line-height: 24px;
+}
+.nav-iii{
+    background:#FF7F24;
+	line-height: 30px;
+	height:30px;
+}
+.nav-iii .one-nav-title-text{
+	margin-left:30px;
+}
